@@ -3,13 +3,24 @@ cd env/Scripts
 .\activate
 
 cd D:\git-repos\test\black-dashboard-django-master\
+cd C:\Code\Project_1\black-dashboard-django-master\
+
+
 
 # pip3 install -r requirements.txt
+
+git commit -m "Initial Dashboard Upload"
 
 python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver
 
+
+# emma.chen
+# CTPScoco850730
+
+git config --global user.email "shiyingc09@gmail.com"
+git config --global user.name "ctps910092"
 
 
 https://github.com/creativetimofficial/black-dashboard-django
