@@ -1,0 +1,18 @@
+# virtualenv env
+cd env/Scripts
+.\activate
+
+cd D:\git-repos\test\black-dashboard-django-master\
+
+# pip3 install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+
+
+https://github.com/creativetimofficial/black-dashboard-django
+
+# 所有頁面資訊
+D:\git-repos\test\black-dashboard-django-master\apps\templates\home
