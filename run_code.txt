@@ -3,7 +3,7 @@ cd env/Scripts
 .\activate
 
 cd D:\git-repos\test\black-dashboard-django-master\
-
+cd C:\Code\Project_1\black-dashboard-django-master\
 # pip3 install -r requirements.txt
 
 python manage.py makemigrations
@@ -16,3 +16,6 @@ https://github.com/creativetimofficial/black-dashboard-django
 
 # 所有頁面資訊
 D:\git-repos\test\black-dashboard-django-master\apps\templates\home
+
+enna
+asd123123

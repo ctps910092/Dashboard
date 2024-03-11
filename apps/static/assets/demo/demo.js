@@ -426,11 +426,9 @@ demo = {
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     var chart_data = [700, 900, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
 
-
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
     gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
     gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
     gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
@@ -439,7 +437,7 @@ demo = {
       data: {
         labels: chart_labels,
         datasets: [{
-          label: "My First dataset",
+          label: "My First dataset****",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: '#d346b1',

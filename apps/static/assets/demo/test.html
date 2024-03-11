@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D3.js Example</title>
+  <!-- 引入 D3.js 库 -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+  <!-- SVG 容器 -->
+  <svg id="parallelSetsChart" width="600" height="400"></svg>
+
+  <script>
+    // 定義測試數據
+    const data = [
+      { category1: 'A', category2: 'X', count: 10 },
+      { category1: 'A', category2: 'Y', count: 20 },
+      { category1: 'B', category2: 'X', count: 30 },
+      { category1: 'B', category2: 'Y', count: 40 },
+    ];
+
+    // 繪製平行集圖表的函式
+    function drawParallelSets() {
+      // 创建 SVG 容器
+      const svg = d3.select('#parallelSetsChart');
+
+      // 其餘代碼與你提供的函式內容相同，這裡省略
+    }
+
+    // 在這裡調用函式以繪製圖表
+    drawParallelSets();
+  </script>
+</body>
+</html>
