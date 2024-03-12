@@ -21,65 +21,7 @@ type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 
 
-function drawNetworkGraph() {
-  // set the dimensions and margins of the graph
-  var margin = {top: 0, right: 30, bottom: 30, left: 40},
-    width = 400 - margin.left - margin.right,
-    height = 220 - margin.top - margin.bottom;
 
-  // append the svg object to the body of the page
-  var svg = d3.select("#network_graph")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
-  d3.json("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_network.json", function( data) {
-
-    // Initialize the links
-    var link = svg
-      .selectAll("line")
-      .data(data.links)
-      .enter()
-      .append("line")
-        .style("stroke", "#aaa")
-
-    // Initialize the nodes
-    var node = svg
-      .selectAll("circle")
-      .data(data.nodes)
-      .enter()
-      .append("circle")
-        .attr("r", 20)
-        .style("fill", "#69b3a2")
-
-    // Let's list the force we wanna apply on the network
-    var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
-        .force("link", d3.forceLink()                               // This force provides links between nodes
-              .id(function(d) { return d.id; })                     // This provide  the id of a node
-              .links(data.links)                                    // and this the list of links
-        )
-        .force("charge", d3.forceManyBody().strength(-400))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
-        .on("end", ticked);
-
-    // This function is run at each iteration of the force algorithm, updating the nodes position.
-    function ticked() {
-      link
-          .attr("x1", function(d) { return d.source.x; })
-          .attr("y1", function(d) { return d.source.y; })
-          .attr("x2", function(d) { return d.target.x; })
-          .attr("y2", function(d) { return d.target.y; });
-
-      node
-           .attr("cx", function (d) { return d.x+6; })
-           .attr("cy", function(d) { return d.y-6; });
-    }
-
-  });
-}
 
 function drawHeatmap() {
   // set the dimensions and margins of the graph
@@ -432,7 +374,7 @@ demo_modify_function = {
       }
     };
 
-
+    // 主圖 三Tab切換
     fetch('/static/assets/demo/data.json')
     .then(response => response.json())
     .then(data => {
@@ -592,6 +534,121 @@ demo_modify_function = {
 
 
 
+    var ctx = document.getElementById('modelComparison').getContext('2d');
+
+    var modelComparisonChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Model 1', 'Model 2'],
+            datasets: [{
+                label: 'Accuracy',
+                data: [0.85, 0.78], // Replace with your actual accuracy values for each model
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)'
+                ],
+                borderWidth: 1
+            }, {
+                label: 'F1 Score',
+                data: [0.82, 0.75], // Replace with your actual F1 score values for each model
+                backgroundColor: [
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Model Performance Comparison'
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+
+
+    // 改成讀json且加入image
+
+    fetch('/static/assets/demo/network.json')
+    .then(response => response.json())
+    .then(data => {
+
+      // provide the data in the vis format
+      var visNodes = data.nodes.map(node => {
+        return {
+            id: node.id,
+            label: node.label,
+            image: node.image, // 根據節點的不同設置不同的圖片路徑
+        };
+      });
+
+
+      // create a network
+      var container = document.getElementById('network');
+
+      // provide the data in the vis format
+      var data = {
+        nodes: visNodes,
+        edges: data.edges
+      };
+      var options = options = {
+        nodes:{
+            color: '#ffffff',
+            fixed: false,
+            font: '20px arial black',
+            scaling: {
+                label: true
+            },
+            shadow: true,
+            // shape: 'circle',
+            shape: 'image',
+            size: 43,
+            // image:'/static/assets/img/code.png',
+            margin: 5
+        },
+        edges: {
+            arrows: 'to',
+            color: 'black',
+            scaling: {
+                label: true,
+            },
+            shadow: true,
+        }
+      };
+
+      // initialize your network!
+      var network = new vis.Network(container, data, options);
+
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
+
+
+
+
+
+
+
+
 
 
 
@@ -712,6 +769,68 @@ demo_modify_function = {
 
     
 
+// TEMP!!!!!!!!!!!!!!!!!!!!!工作需要
+    fetch('/static/assets/demo/temp_input.json')
+    .then(response => response.json())
+    .then(data => {
+      // 解析 JSON 数据并赋值给变量
+      var labels = data.labels;
+      var data = data.values;
+      var ctx = document.getElementById("temp_bar_chart").getContext("2d");
+      // 在这里可以使用 chart_labels 和 chart_data 进行其他操作
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        responsive: true,
+        legend: {
+            display: false
+        },
+        data: {
+            labels: labels, // 将标签数据从 JSON 中读取
+            datasets: [{
+                label: "Countries",
+                fill: true,
+                backgroundColor: gradientStroke,
+                hoverBackgroundColor: gradientStroke,
+                borderColor: '#1f8ef1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                data: data, // 将数据从 JSON 中读取
+            }]
+        },
+        options: Object.assign({}, gradientBarChartConfiguration,{
+          plugins: {
+              datalabels: {
+                  anchor: 'end',
+                  align: 'top',
+                  formatter: (value, context) => {
+                      return (value).toFixed(0) + "%"; // 將值轉換為百分比形式
+                  }
+              }
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                      min: 0, // 設置 Y 軸的最小值
+                      max: 40, // 設置 Y 軸的最大值
+                      callback: function(value, index, values) {
+                          return (value).toFixed(0) + "%"; // 將 Y 軸的值轉換為百分比形式
+                      }
+                  }
+              }],
+              xAxes: [{
+                barPercentage: 0.5, // 調整條形的寬度
+                categoryPercentage: 0.8 // 調整條形的寬度
+            }],
+          }
+      })
+    });
+    })
+
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
 
     
 

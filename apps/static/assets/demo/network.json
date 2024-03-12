@@ -1,0 +1,17 @@
+{
+    "nodes": [
+      {"id": 1, "label": "Node 1", "image": "/static/assets/img/man.png"},
+      {"id": 2, "label": "Node 2", "image": "/static/assets/img/woman.png"},
+      {"id": 3, "label": "Node 3", "image": "/static/assets/img/woman.png"},
+      {"id": 4, "label": "Node 4", "image": "/static/assets/img/man.png"},
+      {"id": 5, "label": "Node 5", "image": "/static/assets/img/woman.png"},
+      {"id": 6, "label": "中文可以", "image": "/static/assets/img/man.png"}
+    ],
+    "edges": [
+      {"from": 1, "to": 3},
+      {"from": 1, "to": 2},
+      {"from": 2, "to": 4},
+      {"from": 2, "to": 5},
+      {"from": 6, "to": 5}
+    ]
+  }
