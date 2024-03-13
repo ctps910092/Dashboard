@@ -5,15 +5,10 @@ type = ['primary', 'info', 'success', 'warning', 'danger'];
   // 除了 Chart.js，還有其他一些流行的 JavaScript 圖表庫可以用來創建各種類型的圖表。以下是一些常見的選擇：
 
   // D3.js: D3.js 是一個功能強大且靈活的 JavaScript 库，用於創建交互式數據視覺化。它提供了豐富的功能和彈性，可以用來創建各種類型的圖表，包括但不限於折線圖、柱狀圖、散點圖、熱力圖等。
-  
   // Plotly.js: Plotly.js 是一個開源的 JavaScript 圖表庫，提供了豐富的功能和簡單易用的 API，用於創建各種類型的交互式圖表，包括線性圖、散點圖、直方圖、熱力圖等。它也支持在 Jupyter Notebook 等環境中使用。
-  
   // Highcharts: Highcharts 是一個商業級的 JavaScript 圖表庫，提供了豐富的圖表類型和各種定製選項。它易於使用且具有豐富的文檔和示例。
-  
   // Google Charts: Google Charts 是由 Google 提供的一個免費的 JavaScript 圖表庫，提供了各種圖表類型和配置選項，可以用於創建各種類型的靜態圖表。
-  
   // amCharts: amCharts 是一個功能豐富的 JavaScript 圖表庫，提供了各種交互式圖表類型，包括線性圖、柱狀圖、地圖、熱力圖等。它具有豐富的特性和配置選項。
-  
   // 這些圖表庫各有其特點和用途，您可以根據自己的需求和偏好來選擇適合的庫來創建圖表。
 
 
@@ -21,7 +16,7 @@ type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 
 
-
+// 參考 gradientBarChartConfiguration 配色設定
 
 function drawHeatmap() {
   // set the dimensions and margins of the graph
@@ -76,9 +71,9 @@ function drawHeatmap() {
       .append("div")
       .style("opacity", 0)
       .attr("class", "tooltip")
-      .style("background-color", "white")
+      .style("background-color", "#f5f5f5")
       .style("border", "solid")
-      .style("border-width", "2px")
+      .style("border-width", "0px")
       .style("border-radius", "5px")
       .style("padding", "5px")
 
@@ -87,7 +82,7 @@ function drawHeatmap() {
       tooltip
         .style("opacity", 1)
       d3.select(this)
-        .style("stroke", "black")
+        .style("stroke", "#f5f5f5")
         .style("opacity", 1)
     }
     var mousemove = function(d) {
@@ -491,45 +486,45 @@ demo_modify_function = {
     }
 
 
-    // 隨機產生100資料的泡泡圖
-    var ctx = document.getElementById('bubbleChart').getContext('2d');
-    var data = [];
+    // // 隨機產生100資料的泡泡圖
+    // var ctx = document.getElementById('bubbleChart').getContext('2d');
+    // var data = [];
 
-    // Generate random data points
-    for (var i = 0; i < 100; i++) {
-      data.push({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        r: Math.random() * 30, // Adjust the radius range as needed
-      });
-    }
+    // // Generate random data points
+    // for (var i = 0; i < 100; i++) {
+    //   data.push({
+    //     x: Math.random() * 100,
+    //     y: Math.random() * 100,
+    //     r: Math.random() * 30, // Adjust the radius range as needed
+    //   });
+    // }
 
-    var myBubbleChart = new Chart(ctx, {
-      type: 'bubble',
-      data: {
-        datasets: [{
-          label: 'Bubble Chart Example',
-          data: data,
-          backgroundColor: 'rgba(133, 99, 132, 0.6)', // Adjust the background color
-          borderColor: 'rgba(133, 99, 132, 1)',
-          borderWidth: 2,
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }],
-          xAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
+    // var myBubbleChart = new Chart(ctx, {
+    //   type: 'bubble',
+    //   data: {
+    //     datasets: [{
+    //       label: 'Bubble Chart Example',
+    //       data: data,
+    //       backgroundColor: 'rgba(133, 99, 132, 0.6)', // Adjust the background color
+    //       borderColor: 'rgba(133, 99, 132, 1)',
+    //       borderWidth: 2,
+    //     }]
+    //   },
+    //   options: {
+    //     scales: {
+    //       yAxes: [{
+    //         ticks: {
+    //           beginAtZero: true
+    //         }
+    //       }],
+    //       xAxes: [{
+    //         ticks: {
+    //           beginAtZero: true
+    //         }
+    //       }]
+    //     }
+    //   }
+    // });
 
 
 
@@ -608,11 +603,12 @@ demo_modify_function = {
         nodes: visNodes,
         edges: data.edges
       };
-      var options = options = {
+      // 參考 gradientBarChartConfiguration 配色設定
+      var options = {
         nodes:{
             color: '#ffffff',
             fixed: false,
-            font: '20px arial black',
+            font: '20px arial #9e9e9e',
             scaling: {
                 label: true
             },
@@ -625,7 +621,7 @@ demo_modify_function = {
         },
         edges: {
             arrows: 'to',
-            color: 'black',
+            color: '#9e9e9e',
             scaling: {
                 label: true,
             },
@@ -644,8 +640,166 @@ demo_modify_function = {
 
 
 
+    // highcharts.js
+    $('#density_heatmap').highcharts({
+
+      // title: {
+      //   text: 'Random points locations',
+      // },
+      // subtitle: {
+      //   text: 'Sometimes your data samples are not not in a pretty grid, but looks nice and smooth anyway ;)',
+      // },
+      title: null,
+      subtitle: null,
+
+      chart: {
+          type: 'contour',
+          inverted: false,
+          backgroundColor: 'rgba(0, 0, 0, 0)', // 将背景色设置为透明
+          events: {
+            load: function () {
+                var chart = this;
+                var plotLeft = chart.plotLeft;
+                var plotTop = chart.plotTop;
+                // 添加图像到底层
+                chart.renderer.image('/static/assets/img/cat.jpg', 
+                plotLeft+37, plotTop+49, chart.plotWidth-74, chart.plotHeight-98) // 图像的位置和大小
+                    .add();
+            }
+          },
+      },
+      xAxis: {
+          categories: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura','Timd', 'Laudra'],
+          // min: -100,
+          // max: 100,
+          labels: {
+            style: {
+                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
+            }
+          }
+      },
+      yAxis: {
+          categories: ['categories1', 'categories2', 'categories3', 'categories4', 'categories5'],
+          // min: -100,
+          // max: 100,
+          title: null,
+          labels: {
+            style: {
+                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
+            }
+          }
+      },
+     colorAxis: {
+          stops: [
+               [0, 'rgba(89, 116, 255, 0.6)'],
+              [0.5, 'rgba(127, 255, 89, 0.6)'],
+              [0.9, 'rgba(255, 175, 89, 0.6)']
+          ],
+          labels: {
+            style: {
+                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
+            }
+          }
+  
+      },
+      series: [{
+          borderWidth: 0,
+          data: [[0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 67], [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117], [1, 4, 48], [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19], [3, 4, 16], [4, 0, 38], [4, 1, 5], [4, 2, 8], [4, 3, 117], [4, 4, 115], [5, 0, 88], [5, 1, 32], [5, 2, 12], [5, 3, 6], [5, 4, 120], [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 98], [6, 4, 96], [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84], [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91],[10, 0, 47], [10, 1, 114], [10, 2, 31], [10, 3, 48], [10, 4, 91]],
+          tooltip: {
+              headerFormat: 'Temperature<br/>',
+              pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} ℃</b>'
+          }
+      }]
+  
+    });
 
 
+
+
+
+
+  
+
+
+
+    fetch('/static/assets/demo/treeData.json')
+    .then(response => response.json())
+    .then(data => {
+      Highcharts.chart('treegraph_chart', data);
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
+
+    // Highcharts.chart('container', {
+    //   chart: {
+    //       spacingBottom: 30,
+    //       marginRight: 120,
+    //       height: 1200
+    //   },
+    //   title: {
+    //       text: 'Phylogenetic language tree'
+    //   },
+    //   series: [
+    //       {
+    //           type: 'treegraph',
+    //           keys: ['parent', 'id', 'level'],
+    //           clip: false,
+              // data: [],
+    //           marker: {
+    //               symbol: 'circle',
+    //               radius: 6,
+    //               fillColor: '#ffffff',
+    //               lineWidth: 3
+    //           },
+    //           dataLabels: {
+    //               align: 'left',
+    //               pointFormat: '{point.id}',
+    //               style: {
+    //                   color: '#000000',
+    //                   textOutline: '3px #ffffff',
+    //                   whiteSpace: 'nowrap'
+    //               },
+    //               x: 24,
+    //               crop: false,
+    //               overflow: 'none'
+    //           },
+    //           levels: [
+    //               {
+    //                   level: 1,
+    //                   levelIsConstant: false
+    //               },
+    //               {
+    //                   level: 2,
+    //                   colorByPoint: true
+    //               },
+    //               {
+    //                   level: 3,
+    //                   colorVariation: {
+    //                       key: 'brightness',
+    //                       to: -0.5
+    //                   }
+    //               },
+    //               {
+    //                   level: 4,
+    //                   colorVariation: {
+    //                       key: 'brightness',
+    //                       to: 0.5
+    //                   }
+    //               },
+    //               {
+    //                   level: 6,
+    //                   dataLabels: {
+    //                       x: 10
+    //                   },
+    //                   marker: {
+    //                       radius: 4
+    //                   }
+    //               }
+    //           ]
+    //       }
+    //   ]
+    // });
 
 
 
@@ -769,68 +923,6 @@ demo_modify_function = {
 
     
 
-// TEMP!!!!!!!!!!!!!!!!!!!!!工作需要
-    fetch('/static/assets/demo/temp_input.json')
-    .then(response => response.json())
-    .then(data => {
-      // 解析 JSON 数据并赋值给变量
-      var labels = data.labels;
-      var data = data.values;
-      var ctx = document.getElementById("temp_bar_chart").getContext("2d");
-      // 在这里可以使用 chart_labels 和 chart_data 进行其他操作
-      var myChart = new Chart(ctx, {
-        type: 'bar',
-        responsive: true,
-        legend: {
-            display: false
-        },
-        data: {
-            labels: labels, // 将标签数据从 JSON 中读取
-            datasets: [{
-                label: "Countries",
-                fill: true,
-                backgroundColor: gradientStroke,
-                hoverBackgroundColor: gradientStroke,
-                borderColor: '#1f8ef1',
-                borderWidth: 2,
-                borderDash: [],
-                borderDashOffset: 0.0,
-                data: data, // 将数据从 JSON 中读取
-            }]
-        },
-        options: Object.assign({}, gradientBarChartConfiguration,{
-          plugins: {
-              datalabels: {
-                  anchor: 'end',
-                  align: 'top',
-                  formatter: (value, context) => {
-                      return (value).toFixed(0) + "%"; // 將值轉換為百分比形式
-                  }
-              }
-          },
-          scales: {
-              yAxes: [{
-                  ticks: {
-                      beginAtZero: true,
-                      min: 0, // 設置 Y 軸的最小值
-                      max: 40, // 設置 Y 軸的最大值
-                      callback: function(value, index, values) {
-                          return (value).toFixed(0) + "%"; // 將 Y 軸的值轉換為百分比形式
-                      }
-                  }
-              }],
-              xAxes: [{
-                barPercentage: 0.5, // 調整條形的寬度
-                categoryPercentage: 0.8 // 調整條形的寬度
-            }],
-          }
-      })
-    });
-    })
-
-    .catch(error => {
-      console.error('Error fetching JSON:', error);
-    });
 
     
 

@@ -1,0 +1,116 @@
+{
+    "chart": {
+      "spacingBottom": 30,
+      "marginRight": 120,
+      "height": 600,
+      "width": 900
+    },
+    "title": {
+      "text": "Phylogenetic language tree"
+    },
+    "series": [
+      {
+        "type": "treegraph",
+        "keys": ["parent", "id", "level"],
+        "clip": false,
+        "data": [
+            [null, "Proto Indo-European"],
+            ["Proto Indo-European", "Balto-Slavic"],
+            ["Proto Indo-European", "Germanic"],
+            ["Proto Indo-European", "Celtic"],
+            ["Proto Indo-European", "Italic"],
+            ["Proto Indo-European", "Hellenic"],
+            ["Proto Indo-European", "Anatolian"],
+            ["Proto Indo-European", "Indo-Iranian"],
+            ["Proto Indo-European", "中文可以"],
+            ["Indo-Iranian", "Dardic"],
+            ["Indo-Iranian", "Indic"],
+            ["Indo-Iranian", "Iranian"],
+            ["Iranian", "Old Persian"],
+            ["Old Persian", "Middle Persian"],
+            ["Indic", "Sanskrit"],
+            ["Italic", "Osco-Umbrian"],
+            ["Italic", "Latino-Faliscan"],
+            ["Latino-Faliscan", "Latin"],
+            ["Celtic", "Brythonic"],
+            ["Celtic", "Goidelic"],
+            ["Germanic", "North Germanic"],
+            ["Germanic", "West Germanic"],
+            ["Germanic", "East Germanic"],
+            ["North Germanic", "Old Norse"],
+            ["North Germanic", "Old Swedish"],
+            ["North Germanic", "Old Danish"],
+            ["West Germanic", "Old English"],
+            ["West Germanic", "Old Frisian"],
+            ["West Germanic", "Old Dutch"],
+            ["West Germanic", "Old Low German"],
+            ["West Germanic", "Old High German"],
+            ["Old Norse", "Old Icelandic"],
+            ["Old Norse", "Old Norwegian"],
+            ["Old Swedish", "Middle Swedish"],
+            ["Old Danish", "Middle Danish"],
+            ["Old English", "Middle English"],
+            ["Old Dutch", "Middle Dutch"],
+            ["Old Low German", "Middle Low German"],
+            ["Old High German", "Middle High German"],
+            ["Balto-Slavic", "Baltic"],
+            ["Balto-Slavic", "Slavic"],
+            ["Slavic", "East Slavic"],
+            ["Slavic", "West Slavic"],
+            ["Slavic", "South Slavic"]
+        ],
+        "marker": {
+          "symbol": "circle",
+          "radius": 6,
+          "fillColor": "#ffffff",
+          "lineWidth": 3
+        },
+        "dataLabels": {
+          "align": "left",
+          "pointFormat": "{point.id}",
+          "style": {
+            "color": "#000000",
+            "textOutline": "3px #ffffff",
+            "whiteSpace": "nowrap"
+          },
+          "x": 24,
+          "crop": false,
+          "overflow": "none"
+        },
+        "levels": [
+          {
+            "level": 1,
+            "levelIsConstant": false
+          },
+          {
+            "level": 2,
+            "colorByPoint": true
+          },
+          {
+            "level": 3,
+            "colorVariation": {
+              "key": "brightness",
+              "to": -0.5
+            }
+          },
+          {
+            "level": 4,
+            "colorVariation": {
+              "key": "brightness",
+              "to": 0.5
+            }
+          },
+          {
+            "level": 6,
+            "dataLabels": {
+              "x": 10
+            },
+            "marker": {
+              "radius": 4
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

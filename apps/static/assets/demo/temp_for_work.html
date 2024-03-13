@@ -1,0 +1,78 @@
+<!-- TEMP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
+<div class="row">
+    <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
+    <div class="col-9"> 
+        <!-- # 圓角的底部背景來自於 card card-chart -->
+        <div class="card card-chart">
+            <div class="card-body">
+                <div class="chart-area">
+                    <canvas id="temp_bar_chart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- TEMP!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11 -->
+
+// TEMP!!!!!!!!!!!!!!!!!!!!!工作需要
+    fetch('/static/assets/demo/temp_input.json')
+    .then(response => response.json())
+    .then(data => {
+      // 解析 JSON 数据并赋值给变量
+      var labels = data.labels;
+      var data = data.values;
+      var ctx = document.getElementById("temp_bar_chart").getContext("2d");
+      // 在这里可以使用 chart_labels 和 chart_data 进行其他操作
+      var myChart = new Chart(ctx, {
+        type: 'bar',
+        responsive: true,
+        legend: {
+            display: false
+        },
+        data: {
+            labels: labels, // 将标签数据从 JSON 中读取
+            datasets: [{
+                label: "Countries",
+                fill: true,
+                backgroundColor: gradientStroke,
+                hoverBackgroundColor: gradientStroke,
+                borderColor: '#1f8ef1',
+                borderWidth: 2,
+                borderDash: [],
+                borderDashOffset: 0.0,
+                data: data, // 将数据从 JSON 中读取
+            }]
+        },
+        options: Object.assign({}, gradientBarChartConfiguration,{
+          plugins: {
+              datalabels: {
+                  anchor: 'end',
+                  align: 'top',
+                  formatter: (value, context) => {
+                      return (value).toFixed(0) + "%"; // 將值轉換為百分比形式
+                  }
+              }
+          },
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true,
+                      min: 0, // 設置 Y 軸的最小值
+                      max: 40, // 設置 Y 軸的最大值
+                      callback: function(value, index, values) {
+                          return (value).toFixed(0) + "%"; // 將 Y 軸的值轉換為百分比形式
+                      }
+                  }
+              }],
+              xAxes: [{
+                barPercentage: 0.5, // 調整條形的寬度
+                categoryPercentage: 0.8 // 調整條形的寬度
+            }],
+          }
+      })
+    });
+    })
+
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
