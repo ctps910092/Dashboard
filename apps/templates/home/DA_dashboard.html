@@ -13,6 +13,36 @@
 
 <!-- # 定義名為"content"的模板區塊。在這個區塊中可以放置HTML內容，用於定義網頁的主要內容部分。 -->
 {% block content %}
+
+
+<div class="content">
+    <div class="row">
+        <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
+        <div class="col-12"> 
+            <!-- # 圓角的底部背景來自於 card card-chart -->
+            <div class="card card-chart" style="height: 500px;">
+                <!-- # 字的縮排來自於 card-header -->
+                <div class="card-header ">
+                    <h5 class="card-category">(h5)Total Shipments</h5>
+                    <h2 class="card-title">Combining chart types</h2>
+                </div>
+                <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
+                <div class="card-body">
+                    <!-- # 區塊的實際高度來自於 chart-area -->
+                    <div class="chart-area">
+                        <div id="combining_chart_types"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <div class="content">
         <div class="row">
             <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
@@ -34,6 +64,34 @@
                 </div>
             </div>
         </div>
+
+
+
+        <div class="content">
+            <div class="row">
+                <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
+                <div class="col-12"> 
+                    <!-- # 圓角的底部背景來自於 card card-chart -->
+                    <div class="card card-chart" style="height: 700px;">
+                        <!-- # 字的縮排來自於 card-header -->
+                        <div class="card-header ">
+                            <h5 class="card-category">(h5)Total Shipments</h5>
+                            <h2 class="card-title">Sankey Diagram</h2>
+                        </div>
+                        <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
+                        <div class="card-body">
+                            <!-- # 區塊的實際高度來自於 chart-area -->
+                            <div class="chart-area">
+                                <div id="sankey_diagram"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
 
         <div class="content">
@@ -316,5 +374,11 @@ C:\Code\Project_1\black-dashboard-django-master\apps\static\assets\js\black-dash
 <!-- Treegraph chart -->
 <script src="https://code.highcharts.com/modules/treemap.js"></script>
 <script src="https://code.highcharts.com/modules/treegraph.js"></script>
+
+<!-- Sankey diagram -->
+<script src="https://code.highcharts.com/modules/sankey.js"></script>
+
+<!-- Combining chart types -->
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
 
 {% endblock javascripts %}

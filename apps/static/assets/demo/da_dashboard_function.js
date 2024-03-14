@@ -722,7 +722,7 @@ demo_modify_function = {
 
 
 
-    fetch('/static/assets/demo/treeData.json')
+    fetch('/static/assets/demo/treedata_for_work.json')
     .then(response => response.json())
     .then(data => {
       Highcharts.chart('treegraph_chart', data);
@@ -731,75 +731,117 @@ demo_modify_function = {
       console.error('Error fetching JSON:', error);
     });
 
-    // Highcharts.chart('container', {
-    //   chart: {
-    //       spacingBottom: 30,
-    //       marginRight: 120,
-    //       height: 1200
-    //   },
-    //   title: {
-    //       text: 'Phylogenetic language tree'
-    //   },
-    //   series: [
-    //       {
-    //           type: 'treegraph',
-    //           keys: ['parent', 'id', 'level'],
-    //           clip: false,
-              // data: [],
-    //           marker: {
-    //               symbol: 'circle',
-    //               radius: 6,
-    //               fillColor: '#ffffff',
-    //               lineWidth: 3
-    //           },
-    //           dataLabels: {
-    //               align: 'left',
-    //               pointFormat: '{point.id}',
-    //               style: {
-    //                   color: '#000000',
-    //                   textOutline: '3px #ffffff',
-    //                   whiteSpace: 'nowrap'
-    //               },
-    //               x: 24,
-    //               crop: false,
-    //               overflow: 'none'
-    //           },
-    //           levels: [
-    //               {
-    //                   level: 1,
-    //                   levelIsConstant: false
-    //               },
-    //               {
-    //                   level: 2,
-    //                   colorByPoint: true
-    //               },
-    //               {
-    //                   level: 3,
-    //                   colorVariation: {
-    //                       key: 'brightness',
-    //                       to: -0.5
-    //                   }
-    //               },
-    //               {
-    //                   level: 4,
-    //                   colorVariation: {
-    //                       key: 'brightness',
-    //                       to: 0.5
-    //                   }
-    //               },
-    //               {
-    //                   level: 6,
-    //                   dataLabels: {
-    //                       x: 10
-    //                   },
-    //                   marker: {
-    //                       radius: 4
-    //                   }
-    //               }
-    //           ]
-    //       }
-    //   ]
-    // });
+
+
+    fetch('/static/assets/demo/sankey_diagram_data.json')
+    .then(response => response.json())
+    .then(data => {
+      Highcharts.chart('sankey_diagram', data);
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
+
+
+
+  Highcharts.chart('combining_chart_types', {
+    "chart": {
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+    },
+    title: {
+      text: null,
+      align: 'left'
+    },
+    xAxis: {
+      categories: ['Jet fuel', 'Duty-free diesel', 'Petrol', 'Diesel', 'Gas oil'],
+      labels: {
+        style: {
+            color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
+        }
+      }
+    },
+    yAxis: {
+      title: {
+        text: 'Million liters'
+      },
+      labels: {
+        style: {
+            color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
+        }
+      }
+    },
+    legend: {
+      itemStyle: {
+        color: '#9e9e9e' // 设置图例文字颜色为白色
+      }
+    },
+    tooltip: {
+      valueSuffix: ' million liters'
+    },
+    plotOptions: {
+      series: {
+        borderRadius: '25%'
+      }
+    },
+    series: [{
+      type: 'column',
+      name: '2020',
+      data: [59, 83, 65, 228, 184]
+    }, {
+      type: 'column',
+      name: '2021',
+      data: [24, 79, 72, 240, 167]
+    }, {
+      type: 'column',
+      name: '2022',
+      data: [58, 88, 75, 250, 176]
+    }, {
+      type: 'line',
+      step: 'center',
+      name: 'Average',
+      data: [47, 83.33, 70.66, 239.33, 175.66],
+      marker: {
+        lineWidth: 2,
+        lineColor: Highcharts.getOptions().colors[3],
+        fillColor: 'white'
+      }
+    }, {
+      type: 'pie',
+      name: 'Total',
+      data: [{
+        name: '2020',
+        y: 619,
+        color: Highcharts.getOptions().colors[0], // 2020 color
+        dataLabels: {
+          enabled: true,
+          distance: -50,
+          format: '{point.total} M',
+          style: {
+            fontSize: '15px'
+          }
+        }
+      }, {
+        name: '2021',
+        y: 586,
+        color: Highcharts.getOptions().colors[1] // 2021 color
+      }, {
+        name: '2022',
+        y: 647,
+        color: Highcharts.getOptions().colors[2] // 2022 color
+      }],
+      center: [75, 65],
+      size: 100,
+      innerSize: '70%',
+      showInLegend: false,
+      dataLabels: {
+        enabled: false
+      }
+    }]
+  });
+
+
+
+
 
 
 
