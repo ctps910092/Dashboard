@@ -23,7 +23,7 @@
             <div class="card card-chart" style="height: 500px;">
                 <!-- # 字的縮排來自於 card-header -->
                 <div class="card-header ">
-                    <h5 class="card-category">(h5)Total Shipments</h5>
+                    <h5 class="card-category">Total Shipments</h5>
                     <h2 class="card-title">Combining chart types</h2>
                 </div>
                 <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
@@ -51,7 +51,7 @@
                 <div class="card card-chart">
                     <!-- # 字的縮排來自於 card-header -->
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)Total Shipments</h5>
+                        <h5 class="card-category">Total Shipments</h5>
                         <h2 class="card-title">Bubble Chart</h2>
                     </div>
                     <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
@@ -75,7 +75,7 @@
                     <div class="card card-chart" style="height: 700px;">
                         <!-- # 字的縮排來自於 card-header -->
                         <div class="card-header ">
-                            <h5 class="card-category">(h5)Total Shipments</h5>
+                            <h5 class="card-category">Total Shipments</h5>
                             <h2 class="card-title">Sankey Diagram</h2>
                         </div>
                         <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
@@ -102,7 +102,7 @@
                     <div class="card card-chart" style="height: 700px;">
                         <!-- # 字的縮排來自於 card-header -->
                         <div class="card-header ">
-                            <h5 class="card-category">(h5)Total Shipments</h5>
+                            <h5 class="card-category">Total Shipments</h5>
                             <h2 class="card-title">Treegraph Chart</h2>
                         </div>
                         <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
@@ -124,8 +124,8 @@
                 <!-- # 圓角的底部背景來自於 card card-chart -->
                 <div class="card card-chart">
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)Total Shipments</h5>
-                        <h2 class="card-title">(h2)Performance</h2>
+                        <h5 class="card-category">Total Shipments</h5>
+                        <h2 class="card-title">Performance</h2>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
@@ -139,7 +139,7 @@
                 <!-- # 圓角的底部背景來自於 card card-chart -->
                 <div class="card card-chart">
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)Total Shipments</h5>
+                        <h5 class="card-category">Total Shipments</h5>
                         <h2 class="card-title">Horizontal Bar Chart</h2>
                     </div>
                     <div class="card-body">
@@ -154,6 +154,49 @@
 
 
 
+        <div class="row">
+            <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
+            <div class="col-12"> 
+                <div class="card card-chart">
+                    <div class="card-header ">
+                        <div class="row">
+                            <div class="col-sm-6 text-left">
+                                <h5 class="card-category">Total Shipments</h5>
+                                <h2 class="card-title">Performance</h2>
+                            </div>
+                            <div class="col-sm-6">
+                                <!-- # 標籤表示一個按鈕組，並使用了Bootstrap的按鈕組和按鈕切換的特性。 -->
+                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
+                                    <!-- # 這裡有一個巧思，當頁面被縮小，文字會被取代成圖標顯示 -->
+                                    <label class="btn btn-sm btn-primary btn-simple active" id="00">
+                                        <!-- # checked 預設該按鈕被選中 -->
+                                        <input type="radio" name="options" checked>
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Model Accuracy</span>
+                                        <!-- # i元素，用於顯示一個具有特定圖標的圖標字體 -->
+                                        <span class="d-block d-sm-none"><i class="tim-icons icon-single-02"></i></span>
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple" id="01">
+                                        <input type="radio" class="d-none d-sm-none" name="options">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Model Loss</span>
+                                        <span class="d-block d-sm-none"><i class="tim-icons icon-gift-2"></i></span>
+                                    </label>
+                                    <label class="btn btn-sm btn-primary btn-simple" id="02">
+                                        <input type="radio" class="d-none" name="options">
+                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">AUC ROC Curve</span>
+                                        <span class="d-block d-sm-none"><i class="tim-icons icon-tap-02"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area">
+                            <canvas id="chartBig2"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -167,12 +210,12 @@
                 <!-- # 圓角的底部背景來自於 card card-chart -->
                 <div class="card card-chart">
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)title</h5>
-                        <h2 class="card-title">d3 Heatmap</h2>
+                        <h5 class="card-category">title</h5>
+                        <h2 class="card-title">Heatmap</h2>
                     </div>
                     <div class="card-body">
                         <div class="chart-area">
-                            <div id="heatmap"></div>
+                            <!-- <div id="container"></div> -->
                         </div>
                     </div>
                     
@@ -182,7 +225,7 @@
                 <!-- # 圓角的底部背景來自於 card card-chart -->
                 <div class="card card-chart">
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)title</h5>
+                        <h5 class="card-category">title</h5>
                         <h2 class="card-title">Network Graph</h2>
                     </div>
                     <div class="card-body">
@@ -204,7 +247,7 @@
                 <!-- # 圓角的底部背景來自於 card card-chart -->
                 <div class="card card-chart" style="height: 700px;">
                     <div class="card-header ">
-                        <h5 class="card-category">(h5)title</h5>
+                        <h5 class="card-category">title</h5>
                         <h2 class="card-title">Density Heatmap</h2>
                     </div>
                     <div class="card-body">
@@ -224,7 +267,7 @@
             <div class="col-lg-4">
                 <div class="card card-chart">
                     <div class="card-header">
-                        <h5 class="card-category">(h5)Total Shipments</h5>
+                        <h5 class="card-category">Total Shipments</h5>
                         <h3 class="card-title"><i class="tim-icons icon-bell-55 text-primary"></i> 763,215</h3>
                     </div>
                     <div class="card-body">
@@ -269,57 +312,6 @@
         </div>
 
 
-
-        <div class="row">
-            <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
-            <div class="col-12"> 
-                <div class="card card-chart">
-                    <div class="card-header ">
-                        <div class="row">
-                            <div class="col-sm-6 text-left">
-                                <h5 class="card-category">(h5)Total Shipments</h5>
-                                <h2 class="card-title">(h2)Performance</h2>
-                            </div>
-                            <div class="col-sm-6">
-                                <!-- # 標籤表示一個按鈕組，並使用了Bootstrap的按鈕組和按鈕切換的特性。 -->
-                                <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
-                                    <!-- # 這裡有一個巧思，當頁面被縮小，文字會被取代成圖標顯示 -->
-                                    <label class="btn btn-sm btn-primary btn-simple active" id="0">
-                                        <!-- # checked 預設該按鈕被選中 -->
-                                        <input type="radio" name="options" checked>
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Model Accuracy</span>
-                                        <!-- # i元素，用於顯示一個具有特定圖標的圖標字體 -->
-                                        <span class="d-block d-sm-none"><i class="tim-icons icon-single-02"></i></span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="1">
-                                        <input type="radio" class="d-none d-sm-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Model Loss</span>
-                                        <span class="d-block d-sm-none"><i class="tim-icons icon-gift-2"></i></span>
-                                    </label>
-                                    <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                        <input type="radio" class="d-none" name="options">
-                                        <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">AUC ROC Curve</span>
-                                        <span class="d-block d-sm-none"><i class="tim-icons icon-tap-02"></i></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-area">
-                            <canvas id="chartBig1"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
 {% endblock content %}
 
 # 定義了一個名為"javascripts"的區塊，在這個區塊中可以放置JavaScript代碼
@@ -342,9 +334,9 @@ C:\Code\Project_1\black-dashboard-django-master\apps\static\assets\js\black-dash
     $(document).ready(function () {
         // Javascript method's body can be found in "../../static/assets/demo/demo_modify.js""
         // demo.initDashboardPageCharts();
-        demo_modify_function.initDashboardPageCharts(),
+        demo_modify_function.initDashboardPageCharts();
         // drawNetworkGraph(),
-        drawHeatmap();
+        // drawHeatmap();
     });
 </script>
 
@@ -365,10 +357,15 @@ C:\Code\Project_1\black-dashboard-django-master\apps\static\assets\js\black-dash
 <script src="https://cdn.jsdelivr.net/npm/delaunay-fast@latest"></script> 
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
-<!-- 創建 heatmap 需要的套件 -->
+<!-- 創建 Density heatmap 需要的套件 -->
 <script src="https://code.highcharts.com/modules/heatmap.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
+<!-- 創建 heatmap 需要的套件 -->
+<script src="https://code.highcharts.com/maps/modules/map.js"></script>
+<script src="https://code.highcharts.com/maps/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
+<script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
 
 
 <!-- Treegraph chart -->

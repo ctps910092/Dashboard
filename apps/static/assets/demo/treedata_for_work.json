@@ -1,9 +1,8 @@
 {
     "chart": {
       "spacingBottom": 30,
-      "marginRight": 900,
+      "marginRight": 700,
       "height": 600,
-      "width": 1200,
       "backgroundColor": "transparent"
     },
     "title": {

@@ -1,8 +1,7 @@
 {
     "chart": {
         "backgroundColor": "rgba(0, 0, 0, 0)",
-        "height": 600,
-        "width": 950
+        "height": 600
       },
     "title": {
       "text": null

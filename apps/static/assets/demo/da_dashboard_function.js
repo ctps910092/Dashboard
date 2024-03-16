@@ -1,124 +1,108 @@
 type = ['primary', 'info', 'success', 'warning', 'danger'];
 
 
+// // 參考 gradientBarChartConfiguration 配色設定
+// function drawHeatmap() {
+//   // set the dimensions and margins of the graph
+//   var margin = {top: 0, right: 25, bottom: 30, left: 40},
+//     width = 450 - margin.left - margin.right,
+//     height = 220 - margin.top - margin.bottom;
 
-  // 除了 Chart.js，還有其他一些流行的 JavaScript 圖表庫可以用來創建各種類型的圖表。以下是一些常見的選擇：
+//   // append the svg object to the body of the page
+//   var svg = d3.select("#heatmap")
+//   .append("svg")
+//     .attr("width", width + margin.left + margin.right)
+//     .attr("height", height + margin.top + margin.bottom)
+//   .append("g")
+//     .attr("transform",
+//           "translate(" + margin.left + "," + margin.top + ")");
 
-  // D3.js: D3.js 是一個功能強大且靈活的 JavaScript 库，用於創建交互式數據視覺化。它提供了豐富的功能和彈性，可以用來創建各種類型的圖表，包括但不限於折線圖、柱狀圖、散點圖、熱力圖等。
-  // Plotly.js: Plotly.js 是一個開源的 JavaScript 圖表庫，提供了豐富的功能和簡單易用的 API，用於創建各種類型的交互式圖表，包括線性圖、散點圖、直方圖、熱力圖等。它也支持在 Jupyter Notebook 等環境中使用。
-  // Highcharts: Highcharts 是一個商業級的 JavaScript 圖表庫，提供了豐富的圖表類型和各種定製選項。它易於使用且具有豐富的文檔和示例。
-  // Google Charts: Google Charts 是由 Google 提供的一個免費的 JavaScript 圖表庫，提供了各種圖表類型和配置選項，可以用於創建各種類型的靜態圖表。
-  // amCharts: amCharts 是一個功能豐富的 JavaScript 圖表庫，提供了各種交互式圖表類型，包括線性圖、柱狀圖、地圖、熱力圖等。它具有豐富的特性和配置選項。
-  // 這些圖表庫各有其特點和用途，您可以根據自己的需求和偏好來選擇適合的庫來創建圖表。
+//   //Read the data
+//   d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
 
+//     // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
+//     var myGroups = d3.map(data, function(d){return d.group;}).keys()
+//     var myVars = d3.map(data, function(d){return d.variable;}).keys()
 
+//     // Build X scales and axis:
+//     var x = d3.scaleBand()
+//       .range([ 0, width ])
+//       .domain(myGroups)
+//       .padding(0.05);
+//     svg.append("g")
+//       .style("font-size", 15)
+//       .attr("transform", "translate(0," + height + ")")
+//       .call(d3.axisBottom(x).tickSize(0))
+//       .select(".domain").remove()
 
+//     // Build Y scales and axis:
+//     var y = d3.scaleBand()
+//       .range([ height, 0 ])
+//       .domain(myVars)
+//       .padding(0.05);
+//     svg.append("g")
+//       .style("font-size", 15)
+//       .call(d3.axisLeft(y).tickSize(0))
+//       .select(".domain").remove()
 
+//     // Build color scale
+//     var myColor = d3.scaleSequential()
+//       .interpolator(d3.interpolateInferno)
+//       .domain([1,100])
 
+//     // create a tooltip
+//     var tooltip = d3.select("#heatmap")
+//       .append("div")
+//       .style("opacity", 0)
+//       .attr("class", "tooltip")
+//       .style("background-color", "#f5f5f5")
+//       .style("border", "solid")
+//       .style("border-width", "0px")
+//       .style("border-radius", "5px")
+//       .style("padding", "5px")
 
-// 參考 gradientBarChartConfiguration 配色設定
+//     // Three function that change the tooltip when user hover / move / leave a cell
+//     var mouseover = function(d) {
+//       tooltip
+//         .style("opacity", 1)
+//       d3.select(this)
+//         .style("stroke", "#f5f5f5")
+//         .style("opacity", 1)
+//     }
+//     var mousemove = function(d) {
+//       tooltip
+//         .html("The exact value of<br>this cell is: " + d.value)
+//         .style("left", (d3.mouse(this)[0]+70) + "px")
+//         .style("top", (d3.mouse(this)[1]) + "px")
+//     }
+//     var mouseleave = function(d) {
+//       tooltip
+//         .style("opacity", 0)
+//       d3.select(this)
+//         .style("stroke", "none")
+//         .style("opacity", 0.8)
+//     }
 
-function drawHeatmap() {
-  // set the dimensions and margins of the graph
-  var margin = {top: 0, right: 25, bottom: 30, left: 40},
-    width = 450 - margin.left - margin.right,
-    height = 220 - margin.top - margin.bottom;
-
-  // append the svg object to the body of the page
-  var svg = d3.select("#heatmap")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
-
-  //Read the data
-  d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
-
-    // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-    var myGroups = d3.map(data, function(d){return d.group;}).keys()
-    var myVars = d3.map(data, function(d){return d.variable;}).keys()
-
-    // Build X scales and axis:
-    var x = d3.scaleBand()
-      .range([ 0, width ])
-      .domain(myGroups)
-      .padding(0.05);
-    svg.append("g")
-      .style("font-size", 15)
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x).tickSize(0))
-      .select(".domain").remove()
-
-    // Build Y scales and axis:
-    var y = d3.scaleBand()
-      .range([ height, 0 ])
-      .domain(myVars)
-      .padding(0.05);
-    svg.append("g")
-      .style("font-size", 15)
-      .call(d3.axisLeft(y).tickSize(0))
-      .select(".domain").remove()
-
-    // Build color scale
-    var myColor = d3.scaleSequential()
-      .interpolator(d3.interpolateInferno)
-      .domain([1,100])
-
-    // create a tooltip
-    var tooltip = d3.select("#heatmap")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "#f5f5f5")
-      .style("border", "solid")
-      .style("border-width", "0px")
-      .style("border-radius", "5px")
-      .style("padding", "5px")
-
-    // Three function that change the tooltip when user hover / move / leave a cell
-    var mouseover = function(d) {
-      tooltip
-        .style("opacity", 1)
-      d3.select(this)
-        .style("stroke", "#f5f5f5")
-        .style("opacity", 1)
-    }
-    var mousemove = function(d) {
-      tooltip
-        .html("The exact value of<br>this cell is: " + d.value)
-        .style("left", (d3.mouse(this)[0]+70) + "px")
-        .style("top", (d3.mouse(this)[1]) + "px")
-    }
-    var mouseleave = function(d) {
-      tooltip
-        .style("opacity", 0)
-      d3.select(this)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
-    }
-
-    // add the squares
-    svg.selectAll()
-      .data(data, function(d) {return d.group+':'+d.variable;})
-      .enter()
-      .append("rect")
-        .attr("x", function(d) { return x(d.group) })
-        .attr("y", function(d) { return y(d.variable) })
-        .attr("rx", 4)
-        .attr("ry", 4)
-        .attr("width", x.bandwidth() )
-        .attr("height", y.bandwidth() )
-        .style("fill", function(d) { return myColor(d.value)} )
-        .style("stroke-width", 4)
-        .style("stroke", "none")
-        .style("opacity", 0.8)
-      .on("mouseover", mouseover)
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
-  })
-}
+//     // add the squares
+//     svg.selectAll()
+//       .data(data, function(d) {return d.group+':'+d.variable;})
+//       .enter()
+//       .append("rect")
+//         .attr("x", function(d) { return x(d.group) })
+//         .attr("y", function(d) { return y(d.variable) })
+//         .attr("rx", 4)
+//         .attr("ry", 4)
+//         .attr("width", x.bandwidth() )
+//         .attr("height", y.bandwidth() )
+//         .style("fill", function(d) { return myColor(d.value)} )
+//         .style("stroke-width", 4)
+//         .style("stroke", "none")
+//         .style("opacity", 0.8)
+//       .on("mouseover", mouseover)
+//       .on("mousemove", mousemove)
+//       .on("mouseleave", mouseleave)
+//   })
+// }
 
 
 
@@ -369,71 +353,14 @@ demo_modify_function = {
       }
     };
 
-    // 主圖 三Tab切換
-    fetch('/static/assets/demo/data.json')
-    .then(response => response.json())
-    .then(data => {
-        chart_labels = data.labels;
-        chart_data = data.data_c0;
-        chart_data_c0 = data.data_c0;
-        chart_data_c1 = data.data_c1;
-        chart_data_c2 = data.data_c2;
 
-        var ctx = document.getElementById("chartBig1").getContext('2d');
 
-        var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-        gradientStroke.addColorStop(1, 'rgba(72,72,176,0.1)');
-        gradientStroke.addColorStop(0.4, 'rgba(72,72,176,0.0)');
-        gradientStroke.addColorStop(0, 'rgba(119,52,169,0)'); //purple colors
-        var config = {
-          type: 'line',
-          data: {
-            labels: chart_labels,
-            datasets: [{
-              label: "label~My First dataset****",
-              fill: true,
-              backgroundColor: gradientStroke,
-              borderColor: '#d346b1',
-              borderWidth: 2,
-              borderDash: [],
-              borderDashOffset: 0.0,
-              pointBackgroundColor: '#d346b1',
-              pointBorderColor: 'rgba(255,255,255,0)',
-              pointHoverBackgroundColor: '#d346b1',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: chart_data_c0,
-            }]
-          },
-          options: gradientChartOptionsConfigurationWithTooltipPurple
-        };
-        var myChartData = new Chart(ctx, config);
-        $("#0").click(function() {
-          var data = myChartData.config.data;
-          data.datasets[0].data = chart_data_c0;
-          data.labels = chart_labels;
-          myChartData.update();
-        });
-        $("#1").click(function() {
-          // var chart_data = [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120];
-          var data = myChartData.config.data;
-          data.datasets[0].data = chart_data_c1;
-          data.labels = chart_labels;
-          myChartData.update();
-        });
 
-        $("#2").click(function() {
-          // var chart_data = [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130];
-          var data = myChartData.config.data;
-          data.datasets[0].data = chart_data_c2;
-          data.labels = chart_labels;
-          myChartData.update();
-        });
-    })
-    .catch(error => console.error('Error fetching data:', error));
 
+
+
+
+    
 
     // Function to generate random data for bubbles
     function generateData(count) {
@@ -447,6 +374,7 @@ demo_modify_function = {
       }
       return data;
     }
+
     
     // 泡泡圖共三類
     var ctx = document.getElementById('bubbleChart_Category').getContext('2d');
@@ -484,47 +412,6 @@ demo_modify_function = {
     function randomInteger(min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
-
-    // // 隨機產生100資料的泡泡圖
-    // var ctx = document.getElementById('bubbleChart').getContext('2d');
-    // var data = [];
-
-    // // Generate random data points
-    // for (var i = 0; i < 100; i++) {
-    //   data.push({
-    //     x: Math.random() * 100,
-    //     y: Math.random() * 100,
-    //     r: Math.random() * 30, // Adjust the radius range as needed
-    //   });
-    // }
-
-    // var myBubbleChart = new Chart(ctx, {
-    //   type: 'bubble',
-    //   data: {
-    //     datasets: [{
-    //       label: 'Bubble Chart Example',
-    //       data: data,
-    //       backgroundColor: 'rgba(133, 99, 132, 0.6)', // Adjust the background color
-    //       borderColor: 'rgba(133, 99, 132, 1)',
-    //       borderWidth: 2,
-    //     }]
-    //   },
-    //   options: {
-    //     scales: {
-    //       yAxes: [{
-    //         ticks: {
-    //           beginAtZero: true
-    //         }
-    //       }],
-    //       xAxes: [{
-    //         ticks: {
-    //           beginAtZero: true
-    //         }
-    //       }]
-    //     }
-    //   }
-    // });
 
 
 
@@ -845,6 +732,101 @@ demo_modify_function = {
 
 
 
+
+
+    // 創建一個函數，將輸入的色碼和透明度轉換為相應的 rgba 格式
+    function rgbaColor(color, alpha) {
+      // 將色碼解析為 RGB 組件
+      var matches = color.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+      var r = parseInt(matches[1], 16);
+      var g = parseInt(matches[2], 16);
+      var b = parseInt(matches[3], 16);
+      
+      // 返回 rgba 格式的顏色
+      return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+    }
+
+
+    function LineChart(data, label, color, gradientStroke) {
+      var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+      gradientStroke.addColorStop(1, rgbaColor(color, 0.1));
+      gradientStroke.addColorStop(0.4, rgbaColor(color, 0));
+      gradientStroke.addColorStop(0, rgbaColor(color, 0)); //purple colors
+
+      var dataset = {
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: data,
+          label: label, // 使用傳入的標籤
+          borderColor: color,
+          pointBackgroundColor: color,
+          pointHoverBackgroundColor: color,
+          pointBorderWidth: 20,
+          pointHoverRadius: 4
+      };
+      return dataset;
+    }
+  
+
+    // 預期Comparing Various ML models(ROC curve comparison)
+    // 主圖 三Tab切換
+    fetch('/static/assets/demo/data.json')
+    .then(response => response.json())
+    .then(data => {
+        chart_labels = data.labels;
+        chart_data = data.data_c0;
+        chart_data_c0 = data.data_c0;
+        chart_data_c1 = data.data_c1;
+        chart_data_c2 = data.data_c2;
+
+        var ctx = document.getElementById("chartBig2").getContext('2d');
+
+        // 使用示例：
+        var dataset1 = LineChart(chart_data_c0, 'Dataset 1', '#d346b1', gradientStroke);
+        var dataset2 = LineChart(chart_data_c1, 'Dataset 2', '#EAC100', gradientStroke);
+        var dataset3 = LineChart(chart_data_c2, 'Dataset 3', '#00d6b4', gradientStroke);
+
+        var config = {
+          type: 'line',
+          data: {
+            labels: chart_labels,
+            datasets: [dataset1, dataset2, dataset3]
+          },
+          options: {
+            maintainAspectRatio: false,
+            legend: {
+              display: true
+            }
+          }
+        };
+        var myChartData_2 = new Chart(ctx, config);
+        $("#00").click(function() {
+          var data = myChartData_2.config.data;
+          data.datasets[0].data = chart_data_c0;
+          data.labels = chart_labels;
+          myChartData_2.update();
+        });
+        $("#01").click(function() {
+          var data = myChartData_2.config.data;
+          data.datasets[0].data = chart_data_c1;
+          data.labels = chart_labels;
+          myChartData_2.update();
+        });
+
+        $("#02").click(function() {
+          var data = myChartData_2.config.data;
+          data.datasets[0].data = chart_data_c2;
+          data.labels = chart_labels;
+          myChartData_2.update();
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
 
 
 
