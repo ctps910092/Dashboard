@@ -1,0 +1,76 @@
+{
+    "chart": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "height": 600,
+        "width": 700
+      },
+    "title": {
+      "text": null
+    },
+    "subtitle": {
+      "text":null
+    },
+    "accessibility": {
+      "point": {
+        "valueDescriptionFormat": "{index}. {point.from} to {point.to}, {point.weight}."
+      }
+    },
+    "tooltip": {
+      "headerFormat": null,
+      "pointFormat":
+      "{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.2f} quads",
+      "nodeFormat": "{point.name}: {point.sum:.2f} quads"
+    },
+    "series": [{
+      "keys": ["from", "to", "weight"],
+  
+      "nodes": [
+        {
+          "id": "Bill that could ban TikTok in the US passed. Here's what to know",
+          "color": "#12e0d0"
+        },
+        {
+          "id": "White House urges Senate to 'move swiftly' on TikTok bill as lawmakers drag their heels",
+          "color": "#00c6b7"
+        },
+        {
+          "id": "Content creators blast a potential TikTok ban",
+          "color": "#3ccabf"
+        },
+        {
+          "id": "US Lawmakers See TikTok as China’s Tool, Even as It Distances Itself From Beijing",
+          "color": "#74c0ba"
+        },
+        {
+          "id": "Trump calls TikTok a threat but says some kids could 'go crazy' without it",
+          "color": "#74c0ba"
+        },
+        {
+          "id": "President Biden supports bill that could make TikTok unavailable in the U.S.",
+          "color": "#74c0ba"
+        },
+        {
+          "id": "TikTok",
+          "color": "#D0D0D0"
+        }
+      ],
+  
+      "data": [
+        ["Bill that could ban TikTok in the US passed. Here's what to know", "TikTok", 17],
+        ["White House urges Senate to 'move swiftly' on TikTok bill as lawmakers drag their heels", "TikTok", 13],
+        ["Content creators blast a potential TikTok ban", "TikTok", 11],
+        ["US Lawmakers See TikTok as China’s Tool, Even as It Distances Itself From Beijing", "TikTok", 5],
+        ["Trump calls TikTok a threat but says some kids could 'go crazy' without it", "TikTok", 4],
+        ["President Biden supports bill that could make TikTok unavailable in the U.S.", "TikTok", 4]
+      ],
+      "type": "sankey",
+      "name": "Sankey demo series",
+      "nodePadding": 10,
+      "dataLabels": {
+        "enabled": true,
+        "style": {
+          "fontSize": "15px"
+        }}
+      }]
+  
+    }

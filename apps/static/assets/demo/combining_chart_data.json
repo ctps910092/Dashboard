@@ -1,0 +1,53 @@
+{
+    "series": [{
+      "type": "column",
+      "name": "Group 1",
+      "color": "#7cb5ec",
+      "data": [59, 83, 65, 228, 184]
+    }, {
+      "type": "column",
+      "name": "Group 2",
+      "color": "#625ec8",
+      "data": [24, 79, 72, 240, 167]
+    }, {
+      "type": "column",
+      "name": "Group 3",
+      "color": "#90ed7d",
+      "data": [58, 88, 75, 250, 176]
+    }, {
+      "type": "line",
+      "step": "center",
+      "name": "Average",
+      "color": "#FF5809",
+      "data": [47, 83.33, 70.66, 239.33, 175.66],
+      "marker": {
+        "lineWidth": 2,
+        "lineColor": "#FF5809",
+        "fillColor": "white"
+      }
+    }, {
+      "type": "pie",
+      "name": "Total",
+      "data": [{
+        "name": "Group 1",
+        "y": 619,
+        "color": "#7cb5ec"
+      }, {
+        "name": "Group 2",
+        "y": 586,
+        "color": "#625ec8"
+      }, {
+        "name": "Group 3",
+        "y": 647,
+        "color": "#90ed7d"
+      }],
+      "center": [75, 65],
+      "size": 100,
+      "innerSize": "70%",
+      "showInLegend": false,
+      "dataLabels": {
+        "enabled": false
+      }
+    }]
+  }
+  

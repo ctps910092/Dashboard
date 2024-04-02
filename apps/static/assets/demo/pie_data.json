@@ -1,0 +1,67 @@
+{
+  "series": [
+    {
+      "type": "pie",
+      "name": "Total",
+      "data": [
+        {
+          "name": "Facebook",
+          "y": 619,
+          "color": "#1877F2"
+        },
+        {
+          "name": "YouYube",
+          "y": 586,
+          "color": "#FF0000"
+        },
+        {
+          "name": "TikTok",
+          "y": 647,
+          "color": "#26C1C4"
+        },
+        {
+          "name": "X",
+          "y": 300,
+          "color": "#000000"
+        }
+      ],
+      "center": ["40%", "15%"], 
+      "size": "30%",
+      "innerSize": "70%",
+      "showInLegend": false,
+      "dataLabels": {
+        "enabled": true
+      }
+    },
+    {
+
+      "type": "pie",
+      "name": "Second Pie",
+      "data": [
+
+        {
+          "name": "Signal A",
+          "y": 300,
+          "color": "#f7a35c"
+        },
+        {
+          "name": "Signal B",
+          "y": 400,
+          "color": "#8085e9"
+        },
+        {
+          "name": "Signal C",
+          "y": 500,
+          "color": "#f15c80"
+        }
+      ],
+      "center": ["40%", "65%"],
+      "size": "30%",
+      "innerSize": "70%",
+      "showInLegend": false,
+      "dataLabels": {
+        "enabled": true
+      }
+    }
+  ]
+}

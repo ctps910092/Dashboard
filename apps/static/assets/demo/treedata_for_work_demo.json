@@ -1,0 +1,128 @@
+{
+    "chart": {
+      "spacingBottom": 30,
+      "marginRight": 700,
+      "height": 600,
+      "backgroundColor": "transparent"
+    },
+    "title": {
+      "text": null
+    },
+    "series": [
+      {
+        "type": "treegraph",
+        "keys": ["parent", "id", "name", "level"],
+        "clip": false,
+        "data": [
+            [null, "Entity"],
+            ["Entity", "Ukraine [–]"],
+            ["Entity", "Russia [+]"],
+            ["Entity", "US [–]"],
+            ["Entity", "Israel [–]"],
+            ["Entity", "Joe Biden\t[–]"],
+            ["Entity", "EU [–]"],
+            ["Entity", "Sweden [–]"],
+            ["Entity", "Germany [–]"],
+            ["Entity", "China [+]"],
+            ["Entity", "Saudi Arabia [+]"],
+            ["Entity", "France [–]"],
+
+            ["Ukraine [–]", "Russia Holds Advantage in Ukraine War"],
+            ["Russia [+]", "Russia Holds Advantage in Ukraine War"],
+            ["US [–]", "Majority of Americans Disapprove of Aid to Ukraine"],
+            ["Ukraine [–]", "Majority of Americans Disapprove of Aid to Ukraine"],
+            ["US [–]", "Biden Vetoes Aid to Israel unless Funding for Ukraine Included"],
+            ["Israel [–]",
+             "Biden Vetoes Aid to Israel unless Funding for Ukraine Included"],
+            ["Joe Biden\t[–]",
+             "Biden Vetoes Aid to Israel unless Funding for Ukraine Included"],
+            ["Israel [–]",
+             "Israel❜s Actions Compared to Extreme Terrorist Organizations"],
+            ["EU [–]",
+             "EU Considering Sanctions Over Carlson❜s Interview with Putin"],
+            ["Sweden [–]",
+             "Russia Monitoring Nord Stream Explosion Investigation by Germany and Sweden"],
+            ["Germany [–]",
+             "Russia Monitoring Nord Stream Explosion Investigation by Germany and Sweden"],
+            ["US [–]", "Putin Blames the US for Nord Stream Destruction"],
+            ["Russia [+]",
+             "Emphasis on High-Level Russia-China Relations, Leader Communication, and Joint Projects in the Chemical Industry"],
+            ["China [+]",
+             "Emphasis on High-Level Russia-China Relations, Leader Communication, and Joint Projects in the Chemical Industry"],
+            ["Russia [+]",
+             "Russia Collaborates with Arab Nations for Syria Reconstruction, Emphasizing Concerns about the US in the Middle East"],
+            ["Saudi Arabia [+]",
+             "Russia Collaborates with Arab Nations for Syria Reconstruction, Emphasizing Concerns about the US in the Middle East"],
+            ["US [–]",
+             "Russia Collaborates with Arab Nations for Syria Reconstruction, Emphasizing Concerns about the US in the Middle East"],
+            ["US [–]",
+             "Kremlin Responds to Media Reports on Space Deployment of Nuclear Weapons, Labeling it a US Conspiracy"],
+            ["Germany [–]",
+             "German Federal Armed Forces Contemplating Attack on Crimea Bridge, Leaked Audio Suggests"],
+            ["Ukraine [–]",
+             "Lavrov: Diplomatic Resolution Unlikely in Ukraine Issue Due to Western Disregard for Moscow❜s Interests"],
+            ["EU [–]",
+             "Lavrov: Diplomatic Resolution Unlikely in Ukraine Issue Due to Western Disregard for Moscow❜s Interests"],
+            ["France [–]",
+             "Macron Announces Formation of Western Alliance, Providing Long-Range Weapon Support to Ukraine"],
+            ["EU [–]",
+             "Russian Diplomat Criticizes Western Hasty Judgment on Navalny❜s Death"],
+            ["US [–]", "Moscow Urges US Restraint in Navalny❜s Death Issue"]
+
+        ],
+        "marker": {
+          "symbol": "circle",
+          "radius": 6,
+          "fillColor": "#ffffff",
+          "lineWidth": 3
+        },
+        "dataLabels": {
+          "align": "left",
+          "pointFormat": "{point.id}",
+          "style": {
+            "color": "#000000",
+            "textOutline": "3px #ffffff",
+            "whiteSpace": "nowrap"
+          },
+          "x": 24,
+          "crop": false,
+          "overflow": "none"
+        },
+        "levels": [
+          {
+            "level": 1,
+            "levelIsConstant": false
+          },
+          {
+            "level": 2,
+            "colorByPoint": true
+          },
+          {
+            "level": 3,
+            "colorVariation": {
+              "key": "brightness",
+              "to": -0.5
+            }
+          },
+          {
+            "level": 4,
+            "colorVariation": {
+              "key": "brightness",
+              "to": 0.5
+            }
+          },
+          {
+            "level": 6,
+            "dataLabels": {
+              "x": 10
+            },
+            "marker": {
+              "radius": 4
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
+  

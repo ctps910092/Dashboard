@@ -1,0 +1,108 @@
+{
+    "chart": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "height": 800
+      },
+    "title": {
+      "text": null
+    },
+    "subtitle": {
+      "text":null
+    },
+    "accessibility": {
+      "point": {
+        "valueDescriptionFormat": "{index}. {point.from} to {point.to}, {point.weight}."
+      }
+    },
+    "tooltip": {
+      "headerFormat": null,
+      "pointFormat":
+      "{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.2f} quads",
+      "nodeFormat": "{point.name}: {point.sum:.2f} quads"
+    },
+    "series": [{
+      "keys": ["from", "to", "weight"],
+  
+      "nodes": [
+        {
+          "id": "TikTok urges US users to call senators to vote no on TikTok ban",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Content creators blast a potential TikTok ban",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Bill that could ban TikTok in the US passed. Here's what to know",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Biden's reelection campaign joins TikTok in push for young voters",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Congress wants to ban TikTok — but don’t panic just yet",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Florida moves forward to restrict social media use by minors. Read HB 1",
+          "color": "#FF7575"
+        },
+        {
+          "id": "Twitter",
+          "color": "#FF7575"
+        },
+        {
+          "id": "YouTube",
+          "color": "#FF7575"
+        },
+        {
+          "id": "Facebook",
+          "color": "#FF7575"
+        },
+        {
+          "id": "TikTok",
+          "color": "#D0D0D0"
+        }
+      ],
+  
+      "data": [
+        ["TikTok urges US users to call senators to vote no on TikTok ban", "Twitter", 100],
+        ["TikTok urges US users to call senators to vote no on TikTok ban", "YouTube", 40],
+        ["TikTok urges US users to call senators to vote no on TikTok ban", "Facebook", 3],
+        ["TikTok urges US users to call senators to vote no on TikTok ban", "TikTok", 2],
+        ["Content creators blast a potential TikTok ban", "Twitter", 70],
+        ["Content creators blast a potential TikTok ban", "YouTube", 30],
+        ["Content creators blast a potential TikTok ban", "Facebook", 5],
+        ["Content creators blast a potential TikTok ban", "TikTok", 5],
+        ["Bill that could ban TikTok in the US passed. Here's what to know", "Twitter", 50],
+        ["Bill that could ban TikTok in the US passed. Here's what to know", "YouTube", 20],
+        ["Bill that could ban TikTok in the US passed. Here's what to know", "Facebook", 2],
+        ["Bill that could ban TikTok in the US passed. Here's what to know", "TikTok", 2],
+        ["Biden's reelection campaign joins TikTok in push for young voters", "Twitter", 30],
+        ["Biden's reelection campaign joins TikTok in push for young voters", "YouTube", 10],
+        ["Congress wants to ban TikTok — but don’t panic just yet", "Twitter", 8],
+        ["Congress wants to ban TikTok — but don’t panic just yet", "YouTube", 10],
+        ["Congress wants to ban TikTok — but don’t panic just yet", "TikTok", 2],
+        ["Florida moves forward to restrict social media use by minors. Read HB 1", "Twitter", 15],
+        ["Florida moves forward to restrict social media use by minors. Read HB 1", "YouTube", 5],
+        ["Florida moves forward to restrict social media use by minors. Read HB 1", "Facebook", 5]
+
+        
+        
+
+
+
+        
+      ],
+      "type": "sankey",
+      "name": "Sankey demo series",
+      "nodePadding": 10,
+      "dataLabels": {
+        "enabled": true,
+        "style": {
+          "fontSize": "18px"
+        }}
+      }]
+  
+    }

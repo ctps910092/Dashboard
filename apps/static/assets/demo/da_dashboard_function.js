@@ -1,115 +1,7 @@
 type = ['primary', 'info', 'success', 'warning', 'danger'];
-
-
-// // 參考 gradientBarChartConfiguration 配色設定
-// function drawHeatmap() {
-//   // set the dimensions and margins of the graph
-//   var margin = {top: 0, right: 25, bottom: 30, left: 40},
-//     width = 450 - margin.left - margin.right,
-//     height = 220 - margin.top - margin.bottom;
-
-//   // append the svg object to the body of the page
-//   var svg = d3.select("#heatmap")
-//   .append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//     .attr("transform",
-//           "translate(" + margin.left + "," + margin.top + ")");
-
-//   //Read the data
-//   d3.csv("https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv", function(data) {
-
-//     // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
-//     var myGroups = d3.map(data, function(d){return d.group;}).keys()
-//     var myVars = d3.map(data, function(d){return d.variable;}).keys()
-
-//     // Build X scales and axis:
-//     var x = d3.scaleBand()
-//       .range([ 0, width ])
-//       .domain(myGroups)
-//       .padding(0.05);
-//     svg.append("g")
-//       .style("font-size", 15)
-//       .attr("transform", "translate(0," + height + ")")
-//       .call(d3.axisBottom(x).tickSize(0))
-//       .select(".domain").remove()
-
-//     // Build Y scales and axis:
-//     var y = d3.scaleBand()
-//       .range([ height, 0 ])
-//       .domain(myVars)
-//       .padding(0.05);
-//     svg.append("g")
-//       .style("font-size", 15)
-//       .call(d3.axisLeft(y).tickSize(0))
-//       .select(".domain").remove()
-
-//     // Build color scale
-//     var myColor = d3.scaleSequential()
-//       .interpolator(d3.interpolateInferno)
-//       .domain([1,100])
-
-//     // create a tooltip
-//     var tooltip = d3.select("#heatmap")
-//       .append("div")
-//       .style("opacity", 0)
-//       .attr("class", "tooltip")
-//       .style("background-color", "#f5f5f5")
-//       .style("border", "solid")
-//       .style("border-width", "0px")
-//       .style("border-radius", "5px")
-//       .style("padding", "5px")
-
-//     // Three function that change the tooltip when user hover / move / leave a cell
-//     var mouseover = function(d) {
-//       tooltip
-//         .style("opacity", 1)
-//       d3.select(this)
-//         .style("stroke", "#f5f5f5")
-//         .style("opacity", 1)
-//     }
-//     var mousemove = function(d) {
-//       tooltip
-//         .html("The exact value of<br>this cell is: " + d.value)
-//         .style("left", (d3.mouse(this)[0]+70) + "px")
-//         .style("top", (d3.mouse(this)[1]) + "px")
-//     }
-//     var mouseleave = function(d) {
-//       tooltip
-//         .style("opacity", 0)
-//       d3.select(this)
-//         .style("stroke", "none")
-//         .style("opacity", 0.8)
-//     }
-
-//     // add the squares
-//     svg.selectAll()
-//       .data(data, function(d) {return d.group+':'+d.variable;})
-//       .enter()
-//       .append("rect")
-//         .attr("x", function(d) { return x(d.group) })
-//         .attr("y", function(d) { return y(d.variable) })
-//         .attr("rx", 4)
-//         .attr("ry", 4)
-//         .attr("width", x.bandwidth() )
-//         .attr("height", y.bandwidth() )
-//         .style("fill", function(d) { return myColor(d.value)} )
-//         .style("stroke-width", 4)
-//         .style("stroke", "none")
-//         .style("opacity", 0.8)
-//       .on("mouseover", mouseover)
-//       .on("mousemove", mousemove)
-//       .on("mouseleave", mouseleave)
-//   })
-// }
-
-
-
 demo_modify_function = {
 
   initDashboardPageCharts: function() {
-
 
     gradientChartOptionsConfigurationWithTooltipBlue = {
       maintainAspectRatio: false,
@@ -354,12 +246,6 @@ demo_modify_function = {
     };
 
 
-
-
-
-
-
-
     
 
     // Function to generate random data for bubbles
@@ -465,151 +351,9 @@ demo_modify_function = {
 
 
 
+    fetch('/static/assets/demo/treedata_for_work_demo.json')
+    // fetch('/static/assets/demo/treedata_0318wr.json')
 
-    // 改成讀json且加入image
-
-    fetch('/static/assets/demo/network.json')
-    .then(response => response.json())
-    .then(data => {
-
-      // provide the data in the vis format
-      var visNodes = data.nodes.map(node => {
-        return {
-            id: node.id,
-            label: node.label,
-            image: node.image, // 根據節點的不同設置不同的圖片路徑
-        };
-      });
-
-
-      // create a network
-      var container = document.getElementById('network');
-
-      // provide the data in the vis format
-      var data = {
-        nodes: visNodes,
-        edges: data.edges
-      };
-      // 參考 gradientBarChartConfiguration 配色設定
-      var options = {
-        nodes:{
-            color: '#ffffff',
-            fixed: false,
-            font: '20px arial #9e9e9e',
-            scaling: {
-                label: true
-            },
-            shadow: true,
-            // shape: 'circle',
-            shape: 'image',
-            size: 43,
-            // image:'/static/assets/img/code.png',
-            margin: 5
-        },
-        edges: {
-            arrows: 'to',
-            color: '#9e9e9e',
-            scaling: {
-                label: true,
-            },
-            shadow: true,
-        }
-      };
-
-      // initialize your network!
-      var network = new vis.Network(container, data, options);
-
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-    });
-
-
-
-
-    // highcharts.js
-    $('#density_heatmap').highcharts({
-
-      // title: {
-      //   text: 'Random points locations',
-      // },
-      // subtitle: {
-      //   text: 'Sometimes your data samples are not not in a pretty grid, but looks nice and smooth anyway ;)',
-      // },
-      title: null,
-      subtitle: null,
-
-      chart: {
-          type: 'contour',
-          inverted: false,
-          backgroundColor: 'rgba(0, 0, 0, 0)', // 将背景色设置为透明
-          events: {
-            load: function () {
-                var chart = this;
-                var plotLeft = chart.plotLeft;
-                var plotTop = chart.plotTop;
-                // 添加图像到底层
-                chart.renderer.image('/static/assets/img/cat.jpg', 
-                plotLeft+37, plotTop+49, chart.plotWidth-74, chart.plotHeight-98) // 图像的位置和大小
-                    .add();
-            }
-          },
-      },
-      xAxis: {
-          categories: ['Alexander', 'Marie', 'Maximilian', 'Sophia', 'Lukas', 'Maria', 'Leon', 'Anna', 'Tim', 'Laura','Timd', 'Laudra'],
-          // min: -100,
-          // max: 100,
-          labels: {
-            style: {
-                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
-            }
-          }
-      },
-      yAxis: {
-          categories: ['categories1', 'categories2', 'categories3', 'categories4', 'categories5'],
-          // min: -100,
-          // max: 100,
-          title: null,
-          labels: {
-            style: {
-                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
-            }
-          }
-      },
-     colorAxis: {
-          stops: [
-               [0, 'rgba(89, 116, 255, 0.6)'],
-              [0.5, 'rgba(127, 255, 89, 0.6)'],
-              [0.9, 'rgba(255, 175, 89, 0.6)']
-          ],
-          labels: {
-            style: {
-                color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
-            }
-          }
-  
-      },
-      series: [{
-          borderWidth: 0,
-          data: [[0, 0, 10], [0, 1, 19], [0, 2, 8], [0, 3, 24], [0, 4, 67], [1, 0, 92], [1, 1, 58], [1, 2, 78], [1, 3, 117], [1, 4, 48], [2, 0, 35], [2, 1, 15], [2, 2, 123], [2, 3, 64], [2, 4, 52], [3, 0, 72], [3, 1, 132], [3, 2, 114], [3, 3, 19], [3, 4, 16], [4, 0, 38], [4, 1, 5], [4, 2, 8], [4, 3, 117], [4, 4, 115], [5, 0, 88], [5, 1, 32], [5, 2, 12], [5, 3, 6], [5, 4, 120], [6, 0, 13], [6, 1, 44], [6, 2, 88], [6, 3, 98], [6, 4, 96], [7, 0, 31], [7, 1, 1], [7, 2, 82], [7, 3, 32], [7, 4, 30], [8, 0, 85], [8, 1, 97], [8, 2, 123], [8, 3, 64], [8, 4, 84], [9, 0, 47], [9, 1, 114], [9, 2, 31], [9, 3, 48], [9, 4, 91],[10, 0, 47], [10, 1, 114], [10, 2, 31], [10, 3, 48], [10, 4, 91]],
-          tooltip: {
-              headerFormat: 'Temperature<br/>',
-              pointFormat: '{point.x:%e %b, %Y} {point.y}:00: <b>{point.value} ℃</b>'
-          }
-      }]
-  
-    });
-
-
-
-
-
-
-  
-
-
-
-    fetch('/static/assets/demo/treedata_for_work.json')
     .then(response => response.json())
     .then(data => {
       Highcharts.chart('treegraph_chart', data);
@@ -620,7 +364,9 @@ demo_modify_function = {
 
 
 
-    fetch('/static/assets/demo/sankey_diagram_data.json')
+    // fetch('/static/assets/demo/sankey_diagram_data_0326wr_weibo.json')
+    fetch('/static/assets/demo/sankey_diagram_data_0326wr_tiktok.json')
+    // fetch('/static/assets/demo/sankey_diagram_data.json')
     .then(response => response.json())
     .then(data => {
       Highcharts.chart('sankey_diagram', data);
@@ -631,108 +377,8 @@ demo_modify_function = {
 
 
 
-  Highcharts.chart('combining_chart_types', {
-    "chart": {
-      "backgroundColor": "rgba(0, 0, 0, 0)",
-    },
-    title: {
-      text: null,
-      align: 'left'
-    },
-    xAxis: {
-      categories: ['Jet fuel', 'Duty-free diesel', 'Petrol', 'Diesel', 'Gas oil'],
-      labels: {
-        style: {
-            color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
-        }
-      }
-    },
-    yAxis: {
-      title: {
-        text: 'Million liters'
-      },
-      labels: {
-        style: {
-            color: '#9e9e9e' // 将 X 轴标签颜色设置为白色
-        }
-      }
-    },
-    legend: {
-      itemStyle: {
-        color: '#9e9e9e' // 设置图例文字颜色为白色
-      }
-    },
-    tooltip: {
-      valueSuffix: ' million liters'
-    },
-    plotOptions: {
-      series: {
-        borderRadius: '25%'
-      }
-    },
-    series: [{
-      type: 'column',
-      name: '2020',
-      data: [59, 83, 65, 228, 184]
-    }, {
-      type: 'column',
-      name: '2021',
-      data: [24, 79, 72, 240, 167]
-    }, {
-      type: 'column',
-      name: '2022',
-      data: [58, 88, 75, 250, 176]
-    }, {
-      type: 'line',
-      step: 'center',
-      name: 'Average',
-      data: [47, 83.33, 70.66, 239.33, 175.66],
-      marker: {
-        lineWidth: 2,
-        lineColor: Highcharts.getOptions().colors[3],
-        fillColor: 'white'
-      }
-    }, {
-      type: 'pie',
-      name: 'Total',
-      data: [{
-        name: '2020',
-        y: 619,
-        color: Highcharts.getOptions().colors[0], // 2020 color
-        dataLabels: {
-          enabled: true,
-          distance: -50,
-          format: '{point.total} M',
-          style: {
-            fontSize: '15px'
-          }
-        }
-      }, {
-        name: '2021',
-        y: 586,
-        color: Highcharts.getOptions().colors[1] // 2021 color
-      }, {
-        name: '2022',
-        y: 647,
-        color: Highcharts.getOptions().colors[2] // 2022 color
-      }],
-      center: [75, 65],
-      size: 100,
-      innerSize: '70%',
-      showInLegend: false,
-      dataLabels: {
-        enabled: false
-      }
-    }]
-  });
-
-
-
-
-
-
-
-
+    // 預期Comparing Various ML models(ROC curve comparison)
+    // 主圖 三Tab切換
 
     // 創建一個函數，將輸入的色碼和透明度轉換為相應的 rgba 格式
     function rgbaColor(color, alpha) {
@@ -772,10 +418,7 @@ demo_modify_function = {
       };
       return dataset;
     }
-  
 
-    // 預期Comparing Various ML models(ROC curve comparison)
-    // 主圖 三Tab切換
     fetch('/static/assets/demo/data.json')
     .then(response => response.json())
     .then(data => {
@@ -788,9 +431,9 @@ demo_modify_function = {
         var ctx = document.getElementById("chartBig2").getContext('2d');
 
         // 使用示例：
-        var dataset1 = LineChart(chart_data_c0, 'Dataset 1', '#d346b1', gradientStroke);
-        var dataset2 = LineChart(chart_data_c1, 'Dataset 2', '#EAC100', gradientStroke);
-        var dataset3 = LineChart(chart_data_c2, 'Dataset 3', '#00d6b4', gradientStroke);
+        var dataset1 = LineChart(chart_data_c0, 'Platform 1', '#d346b1', gradientStroke);
+        var dataset2 = LineChart(chart_data_c1, 'Platform 2', '#EAC100', gradientStroke);
+        var dataset3 = LineChart(chart_data_c2, 'Platform 3', '#00d6b4', gradientStroke);
 
         var config = {
           type: 'line',
@@ -827,6 +470,272 @@ demo_modify_function = {
         });
     })
     .catch(error => console.error('Error fetching data:', error));
+
+
+
+    
+    fetch('/static/assets/demo/combining_chart_data.json')
+    .then(response => response.json())
+    .then(data => {
+      Highcharts.chart('combining_chart_types', {
+        // 使用載入的數據配置圖表
+        chart: {
+          backgroundColor: "rgba(0, 0, 0, 0)",
+        },
+        title: {
+          text: null,
+          align: 'left'
+        },
+        xAxis: {
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+          labels: {
+            style: {
+              color: '#9e9e9e'
+            }
+          }
+        },
+        yAxis: {
+          title: {
+            text: 'Comment Counts'
+          },
+          labels: {
+            style: {
+              color: '#9e9e9e'
+            }
+          }
+        },
+        legend: {
+          itemStyle: {
+            color: '#9e9e9e'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' Comment Counts'
+        },
+        plotOptions: {
+          series: {
+            borderRadius: '25%'
+          }
+        },
+        series: data.series // 從 JSON 文件中設定數據系列
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
+
+
+
+
+
+
+    // 改成读json且加入image
+    // fetch('/static/assets/demo/network_test_0328.json')
+    fetch('/static/assets/demo/network_test_0402.json')
+    .then(response => response.json())
+    .then(data => {
+        // 提供vis格式的数据
+        const visNodes = data.nodes.map(node => ({
+            id: node.id,
+            label: node.label,
+            image: node.imagePath,
+            size: node.size,
+            // 根据节点的不同设置不同的图片路径
+            chosen: false // 确保特定节点的图片不会因事件变化而变化
+        }));
+
+        const container = document.getElementById('network');
+
+        const networkData = {
+            nodes: visNodes,
+            edges: data.edges,
+            size: data.size,
+        };
+
+        // 配色设置参考gradientBarChartConfiguration
+        const options = {
+            nodes: {
+                fixed: false,
+                font: '20px arial #9e9e9e',
+                scaling: { label: true },
+                shadow: true,
+                shape: 'image',
+                image: '/static/assets/img/user-origin.png',
+                margin: 0
+            },
+            edges: {
+                color: '#2b60a5',
+                scaling: { label: true },
+                shadow: true,
+                width: 5
+            },
+            interaction: { hover: true },
+        };
+
+        // 初始化网络
+        const network = new vis.Network(container, networkData, options);
+        // 特定节点的标识函数，如前所述
+        function isSpecialNode(nodeId) {
+          return ['facebook_platform', 'youtube_platform', 'tiktok_platform', 'x_platform'].includes(nodeId);
+        }
+
+        network.on("hoverNode", function (params) {
+          const nodeId = params.node;
+          // 获取与悬停节点相连的所有节点和边
+          const connectedNodes = network.getConnectedNodes(nodeId);
+          const connectedEdges = network.getConnectedEdges(nodeId);
+
+          if (isSpecialNode(nodeId)) {
+              // 对于特定节点和它们相连的边和节点应用特定样式
+              connectedEdges.forEach(edgeId => {
+                  network.body.data.edges.update({
+                      id: edgeId,
+                      color: '#FFFFFF', // 例如，变为白色
+                      width: 3, // 例如，宽度变为3
+                  });
+              });
+
+              connectedNodes.forEach(connectedNodeId => {
+                  if (!isSpecialNode(connectedNodeId)) {
+                      network.body.data.nodes.update({
+                          id: connectedNodeId,
+                          image: '/static/assets/img/user-hover.png', // 更改图片
+                          size: 50, // 改变大小
+                      });
+                  }
+              });
+
+              network.body.data.nodes.update({
+                id: nodeId,
+                size: 65,
+              });
+          } else {
+              // 对于非特定节点，你可以在这里应用不同的样式
+              // 例如，改变这个节点相连的边的样式为另一种
+              connectedEdges.forEach(edgeId => {
+                  network.body.data.edges.update({
+                      id: edgeId,
+                      color: '#FFFFFF', // 示例：变为灰色
+                      width: 3, // 示例：稍微减小宽度
+                  });
+              });
+
+              // 也可以选择更改非特定节点相连节点的样式
+              connectedNodes.forEach(connectedNodeId => {
+                  if (!isSpecialNode(connectedNodeId)) {
+                      network.body.data.nodes.update({
+                          id: connectedNodeId,
+                          size: 45, // 示例：稍微减小大小
+                          // 你可以决定是否要更改图片或其他属性
+                      });
+                  }
+              });
+              // 更新节点样式
+              network.body.data.nodes.update({
+                id: nodeId,
+                size: 50,
+                image: '/static/assets/img/user-hover.png',
+              });
+          }
+        });
+
+        // 在blurNode事件中添加逻辑来恢复原始样式
+        network.on("blurNode", function (params) {
+          const nodeId = params.node;
+          const connectedNodes = network.getConnectedNodes(nodeId);
+          const connectedEdges = network.getConnectedEdges(nodeId);
+
+          // 逻辑来恢复边和节点的原始样式
+          
+          connectedEdges.forEach(edgeId => {
+              network.body.data.edges.update({
+                  id: edgeId,
+                  color: '#2b60a5', // 恢复到原始颜色
+                  width: 5, // 恢复到原始宽度
+              });
+          });
+          if (isSpecialNode(nodeId)) {
+          connectedNodes.forEach(connectedNodeId => {
+              network.body.data.nodes.update({
+                  id: connectedNodeId,
+                  size: 43, // 恢复到原始大小
+                  image: '/static/assets/img/user-origin.png', // 恢复到原始图片
+              });
+              network.body.data.nodes.update({
+                id: nodeId,
+                size: 55,
+              });
+          });
+          } else {
+            // 更新节点样式
+            network.body.data.nodes.update({
+              id: nodeId,
+              size: 43,
+              image: '/static/assets/img/user-origin.png',
+            });
+        }
+        });
+
+
+        // 边悬停和离开的事件处理
+        network.on("hoverEdge", function (params) {
+            network.body.data.edges.update({ id: params.edge, color: '#ffffff' });
+        });
+
+        network.on("blurEdge", function (params) {
+            network.body.data.edges.update({ id: params.edge, color: '#2b60a5' });
+        });
+
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+  
+
+
+
+    
+    fetch('/static/assets/demo/pie_data.json')
+    .then(response => response.json())
+    .then(data => {
+      Highcharts.chart('pie', {
+        // 使用載入的數據配置圖表
+        chart: {
+          backgroundColor: "rgba(0, 0, 0, 0)",
+        },
+        title: {
+          text: null,
+          align: 'left'
+        },
+        legend: {
+          itemStyle: {
+            color: '#9e9e9e'
+          }
+        },
+        tooltip: {
+          valueSuffix: ' Comment Counts'
+        },
+        plotOptions: {
+          series: {
+            borderRadius: '25%'
+          }
+        },
+        series: data.series // 從 JSON 文件中設定數據系列
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching JSON:', error);
+    });
+
+
+
+
+
+
+
+
+
+
+
 
 
 

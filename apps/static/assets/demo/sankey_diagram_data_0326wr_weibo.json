@@ -1,0 +1,76 @@
+{
+    "chart": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "height": 500,
+        "width": 500
+      },
+    "title": {
+      "text": null
+    },
+    "subtitle": {
+      "text":null
+    },
+    "accessibility": {
+      "point": {
+        "valueDescriptionFormat": "{index}. {point.from} to {point.to}, {point.weight}."
+      }
+    },
+    "tooltip": {
+      "headerFormat": null,
+      "pointFormat":
+      "{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.2f} quads",
+      "nodeFormat": "{point.name}: {point.sum:.2f} quads"
+    },
+    "series": [{
+      "keys": ["from", "to", "weight"],
+  
+      "nodes": [
+        {
+          "id": "Canada conducts security review of TikTok investment expansion plan",
+          "color": "#FF5151"
+        },
+        {
+          "id": "TikTok Stripping Act: A generalized 'threat' can't overshadow US public opinion",
+          "color": "#FF7575"
+        },
+        {
+          "id": "Us journalist Carlson: Google and Facebook are spying far more on Americans than TikTok",
+          "color": "#FFB5B5"
+        },
+        {
+          "id": "Unscrupulous attempts to swallow hundreds of billions of dollars of golden eggs,<br> the United States grabs the truth about TikTok",
+          "color": "#FFD2D2"
+        },
+        {
+          "id": "Focus on China again? Give the TikTok bill 'fill the vacancy'<br> the U.S. House of Representatives unanimously passed another bill",
+          "color": "#FFECEC"
+        },
+        {
+          "id": "Us efforts to crack down on TikTok sparks strong backlash against Israel",
+          "color": "#FFECEC"
+        },
+        {
+          "id": "Weibo",
+          "color": "#D0D0D0"
+        }
+      ],
+  
+      "data": [
+        ["Canada conducts security review of TikTok investment expansion plan", "Weibo", 130],
+        ["TikTok Stripping Act: A generalized 'threat' can't overshadow US public opinion", "Weibo", 50],
+        ["Us journalist Carlson: Google and Facebook are spying far more on Americans than TikTok", "Weibo", 20],
+        ["Unscrupulous attempts to swallow hundreds of billions of dollars of golden eggs,<br> the United States grabs the truth about TikTok", "Weibo", 20],
+        ["Focus on China again? Give the TikTok bill 'fill the vacancy'<br> the U.S. House of Representatives unanimously passed another bill", "Weibo", 20],
+        ["Us efforts to crack down on TikTok sparks strong backlash against Israel", "Weibo", 2]
+      ],
+      "type": "sankey",
+      "name": "Sankey demo series",
+      "nodePadding": 10,
+      "dataLabels": {
+        "enabled": true,
+        "style": {
+          "fontSize": "15px"
+        }}
+      }]
+  
+    }
