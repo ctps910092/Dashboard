@@ -126,6 +126,29 @@
     </div>
 
 
+    <div class="row">
+        <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
+        <div class="col-12"> 
+            <!-- # 圓角的底部背景來自於 card card-chart -->
+            <div class="card card-chart" style="height: 450px;">
+                <!-- # 字的縮排來自於 card-header -->
+                <div class="card-header ">
+                    <h5 class="card-category">With custom symbols in data labels</h5>
+                    <h2 class="card-title">Gantt Chart</h2>
+                </div>
+                <!-- # 區塊內容的內縮(邊緣留空)來自於 card-body -->
+                <div class="card-body">
+                    <!-- # 區塊的實際高度來自於 chart-area -->
+                    <div class="chart-area">
+                        <div id="gantt_chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
 
     <div class="row">
         <!-- # 標籤表示一個佔滿12個行寬度的列的開始。 -->
@@ -164,21 +187,21 @@
 
 
     <div class="row">
-        <div class="card card-chart" style="height: 450px;">
+        <div class="card card-chart" style="height: 550px;">
             <div class="card-header">
                 <h5 class="card-category">The relationships among users on a social media platform.</h5>
                 <h2 class="card-title">Social Network Graph</h2>
             </div>
             <!-- 新增 row 类，确保 col-lg-* 类可以正常工作 -->
             <div class="row">
-                <div class="col-lg-5">
+                <div class="col-lg-8">
                     <!-- 网络图的容器 -->
-                    <div id="network" style="height: 400px;"></div>
+                    <div id="network" style="height: 450px;"></div>
                 </div>
     
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <!-- 饼图的容器，保持现有标题 -->
-                    <div id="pie"></div>
+                    <div id="pie" style="height: 450px;"></div>
                 </div>
             </div>
         </div>
@@ -299,7 +322,9 @@ C:\Code\Project_1\black-dashboard-django-master\apps\static\assets\js\black-dash
 <!-- https://stackoverflow.com/questions/34225518/create-density-heatmap-chart-using-jquery-with-array-of-data -->
 <!-- https://jsfiddle.net/aznt8vh6/ -->
 <!-- highcharts.js -->
-<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
+<script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
 <script src="https://code.highcharts.com/maps/modules/heatmap.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/highcharts-contour@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/delaunay-fast@latest"></script> 
@@ -314,7 +339,6 @@ C:\Code\Project_1\black-dashboard-django-master\apps\static\assets\js\black-dash
 <script src="https://code.highcharts.com/maps/modules/data.js"></script>
 <script src="https://code.highcharts.com/modules/offline-exporting.js"></script>
 <script src="https://code.highcharts.com/maps/modules/accessibility.js"></script>
-
 
 <!-- Treegraph chart -->
 <script src="https://code.highcharts.com/modules/treemap.js"></script>

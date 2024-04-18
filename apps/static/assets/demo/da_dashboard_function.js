@@ -246,7 +246,255 @@ demo_modify_function = {
     };
 
 
-    
+
+
+
+  //   Highcharts.ganttChart('gantt_chart', {
+
+  
+  //     xAxis: {
+  //         minPadding: 0.05,
+  //         maxPadding: 0.05
+  //     },
+  
+  //     yAxis: {
+  //         categories: ['Prototyping', 'Development', 'Testing']
+  //     },
+  
+  //     tooltip: {
+  //         outside: true
+  //     },
+  
+  //     accessibility: {
+  //         point: {
+  //             valueDescriptionFormat: '{point.yCategory}, assigned to {point.assignee} from {point.x:%Y-%m-%d} to {point.x2:%Y-%m-%d}.'
+  //         }
+  //     },
+  
+  //     lang: {
+  //         accessibility: {
+  //             axis: {
+  //                 xAxisDescriptionPlural: 'The chart has a two-part X axis showing time in both week numbers and days.'
+  //             }
+  //         }
+  //     },
+  
+  //     series: [{
+  //         name: 'Project 1',
+  //         data: [{
+  //             start: Date.UTC(2018, 11, 1),
+  //             end: Date.UTC(2018, 11, 2),
+  //             y: 0,
+  //             assignee: 'bre1470'
+  //         }, {
+  //             start: Date.UTC(2018, 11, 2),
+  //             end: Date.UTC(2018, 11, 5),
+  //             y: 1,
+  //             assignee: 'oysteinmoseng',
+  //             fontSymbol: 'exclamation',
+  //             accessibility: {
+  //                 description: 'Exclamation symbol.'
+  //             }
+  //         }, {
+  //             start: Date.UTC(2018, 11, 8),
+  //             end: Date.UTC(2018, 11, 9),
+  //             y: 2,
+  //             assignee: 'TorsteinHonsi'
+  //         }, {
+  //             start: Date.UTC(2018, 11, 9),
+  //             end: Date.UTC(2018, 11, 19),
+  //             y: 1,
+  //             assignee: 'bre1470'
+  //         }, {
+  //             start: Date.UTC(2018, 11, 10),
+  //             end: Date.UTC(2018, 11, 23),
+  //             y: 2,
+  //             assignee: 'TorsteinHonsi',
+  //             fontSymbol: 'smile-o',
+  //             accessibility: {
+  //                 description: 'Smiling face symbol.'
+  //             }
+  //         }],
+  //         dataLabels: [{
+  //             enabled: true,
+  //             format: '<div style="width: 20px; height: 20px; overflow: hidden; border-radius: 50%; margin-left: -25px">' +
+  //                 '<img src="https://github.com/{point.assignee}.png" ' +
+  //                 'style="width: 30px; margin-left: -5px; margin-top: -2px"></div>',
+  //             useHTML: true,
+  //             align: 'left'
+  //         }, {
+  //             enabled: true,
+  //             format: '<i class="fa fa-{point.fontSymbol}" style="font-size: 1.5em"></i>',
+  //             useHTML: true,
+  //             align: 'right'
+  //         }]
+  //     }]
+  // });
+
+  // 若要在 Highcharts Gantt 图中将 X 轴切分为特定的三个时间区间，您需要使用 breaks 来自定义这些区间。Highcharts 允许您定义轴上的断点（breaks），这可以用来跳过不需要显示的时间段。
+  Highcharts.ganttChart('gantt_chart', {
+
+  
+    xAxis: [{
+      minPadding: 0,
+      maxPadding: 0,
+      type: 'datetime',
+
+
+      tickPositions: [ // 设置固定的刻度位置，确保这些日期正确无误
+      Date.UTC(2024, 0, 24), // 对应时间区间的开始
+      Date.UTC(2024, 1, 6),
+      // Date.UTC(2024, 1, 12),
+      // Date.UTC(2024, 1, 22),
+      Date.UTC(2024, 2, 5),
+      Date.UTC(2024, 2, 14) // 最后一个时间区间的结束
+      ],
+      
+
+      labels: {
+        formatter: function () {
+            // 根据刻度位置自定义标签
+            switch (this.value) {
+                case Date.UTC(2024, 0, 24): return '2024 1/24 - 2/6';
+                case Date.UTC(2024, 1, 6): return '2024 2/12 - 2/22';
+                case Date.UTC(2024, 2, 5): return '2024 3/5 - 3/14';
+                
+                default: return ''; // 对于未指定的刻度，不显示标签
+            }
+          }
+        },
+
+
+
+      breaks: [{
+          from: Date.UTC(2024, 1, 6), // 结束第一个区间的最后一天
+          to: Date.UTC(2024, 1, 12),  // 开始第二个区间的第一天
+          breakSize: 0
+      }, {
+          from: Date.UTC(2024, 1, 22), // 结束第二个区间的最后一天
+          to: Date.UTC(2024, 2, 5),    // 开始第三个区间的第一天
+          breakSize: 0
+      }]
+    },
+
+    { linkedTo: 0,
+      minPadding: 0,
+      maxPadding: 0,
+      type: 'datetime',
+
+
+      tickPositions: [ // 设置固定的刻度位置，确保这些日期正确无误
+      Date.UTC(2024, 0, 24), // 对应时间区间的开始
+      Date.UTC(2024, 1, 6),
+      // Date.UTC(2024, 1, 12),
+      // Date.UTC(2024, 1, 22),
+      Date.UTC(2024, 2, 5),
+      Date.UTC(2024, 2, 14) // 最后一个时间区间的结束
+      ],
+      
+
+      labels: {
+        formatter: function () {
+            // 根据刻度位置自定义标签
+            switch (this.value) {
+                case Date.UTC(2024, 0, 24): return 'Restrictions Imposed by </br>States on Minors';
+                case Date.UTC(2024, 1, 6): return 'The Biden Campaign Joins </br>TikTok';
+                case Date.UTC(2024, 2, 5): return 'The House of </br>Representatives </br>Passed H.R. 7521';
+                
+                default: return ''; // 对于未指定的刻度，不显示标签
+            }
+          }
+        },
+
+
+
+      breaks: [{
+          from: Date.UTC(2024, 1, 6), // 结束第一个区间的最后一天
+          to: Date.UTC(2024, 1, 12),  // 开始第二个区间的第一天
+          breakSize: 0
+      }, {
+          from: Date.UTC(2024, 1, 22), // 结束第二个区间的最后一天
+          to: Date.UTC(2024, 2, 5),    // 开始第三个区间的第一天
+          breakSize: 0
+      }]
+    },
+  
+  ],
+
+    yAxis: {
+        categories: ['Controversies in Legal </br>and Policy', 'Social Media Impact on </br>Youth', 'Criticism of Political Figures', 
+        'Threats to free speech rights']
+    },
+
+    tooltip: {
+        outside: true
+    },
+
+    series: [{
+        name: 'The Evolution of Narratives',
+        data: [{
+            start: Date.UTC(2024, 0, 24),
+            end: Date.UTC(2024, 1, 6),
+            y: 0,
+            assignee: 'non_flag'
+        },
+        {
+          start: Date.UTC(2024, 0, 24),
+          end: Date.UTC(2024, 1, 6),
+          y: 1,
+          assignee: 'non_flag'
+        },
+        {
+            start: Date.UTC(2024, 1, 12),
+            end: Date.UTC(2024, 1, 22),
+            y: 2,
+            assignee: 'non_flag',
+            fontSymbol: 'exclamation',
+            accessibility: {
+                description: 'Exclamation symbol.'
+            }
+        }, 
+        {
+            start: Date.UTC(2024, 2, 5),
+            end: Date.UTC(2024, 2, 14),
+            y: 0,
+            assignee: 'non_flag'
+        }, 
+        {
+          start: Date.UTC(2024, 2, 5),
+          end: Date.UTC(2024, 2, 14),
+          y: 3,
+          assignee: 'CCP_flag'
+        }, 
+        ],
+
+        dataLabels: [{
+            enabled: true,
+            format: '<div style="width: 30px; height: 30px; overflow: hidden; margin-left: -40px"; margin-top: 0px";>' +
+                // '<img src="https://github.com/{point.assignee}.png" ' +
+                '<img src="/static/assets/img/{point.assignee}.png" ' +
+                'style="width: 25px; margin-left: 5px; margin-top: 5px"></div>',
+            useHTML: true,
+            align: 'left'
+        }, {
+            enabled: true,
+            format: '<i class="fa fa-{point.fontSymbol}" style="font-size: 1.5em"></i>',
+            useHTML: true,
+            align: 'right'
+        }]
+    }]
+});
+
+
+
+
+
+
+
+
+
+
+
 
     // Function to generate random data for bubbles
     function generateData(count) {
@@ -365,7 +613,8 @@ demo_modify_function = {
 
 
     // fetch('/static/assets/demo/sankey_diagram_data_0326wr_weibo.json')
-    fetch('/static/assets/demo/sankey_diagram_data_0326wr_tiktok.json')
+    // fetch('/static/assets/demo/sankey_diagram_data_0326wr_tiktok.json')
+    fetch('/static/assets/demo/sankey_diagram_data_normal_0403wr.json')
     // fetch('/static/assets/demo/sankey_diagram_data.json')
     .then(response => response.json())
     .then(data => {
@@ -591,7 +840,7 @@ demo_modify_function = {
                   network.body.data.edges.update({
                       id: edgeId,
                       color: '#FFFFFF', // 例如，变为白色
-                      width: 3, // 例如，宽度变为3
+                      width: 4, // 例如，宽度变为3
                   });
               });
 
@@ -600,14 +849,14 @@ demo_modify_function = {
                       network.body.data.nodes.update({
                           id: connectedNodeId,
                           image: '/static/assets/img/user-hover.png', // 更改图片
-                          size: 50, // 改变大小
+                          size: 55, // 改变大小
                       });
                   }
               });
 
               network.body.data.nodes.update({
                 id: nodeId,
-                size: 65,
+                size: 70,
               });
           } else {
               // 对于非特定节点，你可以在这里应用不同的样式
@@ -701,22 +950,58 @@ demo_modify_function = {
         // 使用載入的數據配置圖表
         chart: {
           backgroundColor: "rgba(0, 0, 0, 0)",
-        },
+          events: {
+              load: function () {
+                  // 第一個圓餅圖的中心文字
+                  var chart = this,
+                      rend = chart.renderer,
+                      pie1Center = chart.series[0].center;
+  
+                  rend.text('Platform', pie1Center[0]+10, pie1Center[1]+15)
+                      .attr({
+                          'text-anchor': 'middle',
+                      })
+                      .css({
+                          color: '#9e9e9e',
+                          fontSize: '16px'
+                      })
+                      .add();
+  
+                  // 第二個圓餅圖的中心文字
+                  var pie2Center = chart.series[1].center;
+  
+                  rend.text('Signal', pie2Center[0]+10, pie2Center[1]+5 + chart.plotTop)
+                      .attr({
+                          'text-anchor': 'middle',
+                      })
+                      .css({
+                          color: '#9e9e9e',
+                          fontSize: '16px'
+                      })
+                      .add();
+              }
+          }
+      },
         title: {
           text: null,
           align: 'left'
         },
         legend: {
+          layout: "vertical",
+          align: "right",
+          verticalAlign: "middle",
+          // borderWidth: 1 ,
           itemStyle: {
             color: '#9e9e9e'
           }
-        },
+      },
+
         tooltip: {
           valueSuffix: ' Comment Counts'
         },
         plotOptions: {
           series: {
-            borderRadius: '25%'
+            borderRadius: '15%'
           }
         },
         series: data.series // 從 JSON 文件中設定數據系列

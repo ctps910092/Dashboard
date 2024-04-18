@@ -1,0 +1,110 @@
+{
+    "chart": {
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "height": 600
+      },
+    "title": {
+      "text": null
+    },
+    "subtitle": {
+      "text":null
+    },
+    "accessibility": {
+      "point": {
+        "valueDescriptionFormat": "{index}. {point.from} to {point.to}, {point.weight}."
+      }
+    },
+    "tooltip": {
+      "headerFormat": null,
+      "pointFormat":
+      "{point.fromNode.name} \u2192 {point.toNode.name}: {point.weight:.2f} quads",
+      "nodeFormat": "{point.name}: {point.sum:.2f} quads"
+    },
+    "series": [{
+      "keys": ["from", "to", "weight"],
+  
+      "nodes": [
+        {
+          "id": "At Least 120,000 Gather in Berlin for Latest Round of Protests Against Far-Right",
+          "color": "#66B3FF"
+        },
+        {
+          "id": "Hundreds of thousands protest against far-right in Germany",
+          "color": "#66B3FF"
+        },
+        {
+          "id": "A Far-Right Takeover of Europe Is Underway",
+          "color": "#66B3FF"
+        },
+        {
+          "id": "EU adopts measures soon to curb election risks on X, TikTok, Facebook",
+          "color": "#FF9797"
+        },
+        {
+          "id": "European powers warn of spike in Russian propaganda before EU elections",
+          "color": "#FF9797"
+        },
+        {
+          "id": "EU Commission probes Alphabet, Apple, Meta; issues guidelines for<br> addressing digital risks to elections",
+          "color": "#FF9797"
+        },
+        {
+          "id": "Moscow labels potential EU asset seizure as 'act of trade war'",
+          "color": "#D0D0D0"
+        },
+        {
+          "id": "Twitter",
+          "color": "#000000"
+        },
+        {
+          "id": "YouTube",
+          "color": "#CE0000"
+        },
+        {
+          "id": "Facebook",
+          "color": "#0072E3"
+        },
+        {
+          "id": "Weibo",
+          "color": "#FF5809"
+        }
+
+        
+      ],
+  
+      "data": [
+        ["At Least 120,000 Gather in Berlin for Latest Round of Protests Against Far-Right", "Twitter", 697],
+        ["At Least 120,000 Gather in Berlin for Latest Round of Protests Against Far-Right", "YouTube", 661],
+        ["At Least 120,000 Gather in Berlin for Latest Round of Protests Against Far-Right", "Facebook", 171],
+
+        ["Hundreds of thousands protest against far-right in Germany", "Twitter", 2781],
+        ["Hundreds of thousands protest against far-right in Germany", "YouTube", 1655],
+        ["Hundreds of thousands protest against far-right in Germany", "Facebook", 1185],
+
+        ["A Far-Right Takeover of Europe Is Underway", "Twitter", 2840],
+        ["A Far-Right Takeover of Europe Is Underway", "Facebook", 399],
+
+        ["EU adopts measures soon to curb election risks on X, TikTok, Facebook", "Facebook", 150],
+        ["EU adopts measures soon to curb election risks on X, TikTok, Facebook", "Twitter", 304],
+        
+        ["European powers warn of spike in Russian propaganda before EU elections", "Twitter", 897],
+        ["European powers warn of spike in Russian propaganda before EU elections", "Facebook", 255],
+
+        ["EU Commission probes Alphabet, Apple, Meta; issues guidelines for<br> addressing digital risks to elections", "Facebook", 346],
+        ["EU Commission probes Alphabet, Apple, Meta; issues guidelines for<br> addressing digital risks to elections", "Twitter", 1300],
+        ["EU Commission probes Alphabet, Apple, Meta; issues guidelines for<br> addressing digital risks to elections", "YouTube", 771],
+        ["EU Commission probes Alphabet, Apple, Meta; issues guidelines for<br> addressing digital risks to elections", "Weibo", 200]
+
+
+      ],
+      "type": "sankey",
+      "name": "Sankey demo series",
+      "nodePadding": 10,
+      "dataLabels": {
+        "enabled": true,
+        "style": {
+          "fontSize": "18px"
+        }}
+      }]
+  
+    }
